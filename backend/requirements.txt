@@ -1,0 +1,25 @@
+# Web Framework
+fastapi
+uvicorn
+
+# OpenAI
+openai
+
+# Vector Database
+pinecone-client
+pinecone
+
+# Environment & Configuration
+python-dotenv
+pydantic
+
+# LangChain
+langchain
+langchain-openai
+langchain-pinecone
+langchain-community
+
+# Evaluation (for eval_with_ragas.py)
+pandas
+datasets
+ragas

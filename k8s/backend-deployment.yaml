@@ -1,0 +1,61 @@
+# Backend Deployment + Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bible-backend
+  namespace: bible-reference-ai
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bible-backend
+  template:
+    metadata:
+      labels:
+        app: bible-backend
+    spec:
+      containers:
+        - name: backend
+          image: bible-backend:dev  # 替换成你推到 Artifact Registry / GCR 的镜像
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: bible-config
+            - secretRef:
+                name: bible-secrets
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bible-backend-svc
+  namespace: bible-reference-ai
+spec:
+  type: ClusterIP
+  selector:
+    app: bible-backend
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000
+

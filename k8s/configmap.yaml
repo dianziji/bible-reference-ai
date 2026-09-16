@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bible-config
+  namespace: bible-reference-ai
+data:
+  # 后端用到的一些普通配置
+  PINECONE_INDEX_NAME: "bible-verses"
+  PINECONE_ENVIRONMENT: "us-east-1"  # 你实际用的 env
+  REDIS_HOST: "bible-redis-svc"
+  REDIS_PORT: "6379"
+  TOP_K: "5"
+  SCORE_THRESHOLD: "0.5"
+  # 前端调用后端的地址（集群内直接走 Service，避免跨域）
+  BACKEND_URL: "http://bible-backend-svc.bible-reference-ai.svc.cluster.local:8000"
+  # 兼容旧配置（如果你前端代码还会读 NEXT_PUBLIC_*）
+  NEXT_PUBLIC_API_BASE_URL: "http://bible-backend-svc.bible-reference-ai.svc.cluster.local:8000"
+  NEXT_PUBLIC_API_BASE_URL: "http://bible.local"

@@ -1,0 +1,43 @@
+# Redis Deployment + Service (可选，如果你需要缓存)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bible-redis
+  namespace: bible-reference-ai
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bible-redis
+  template:
+    metadata:
+      labels:
+        app: bible-redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7-alpine
+          ports:
+            - containerPort: 6379
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 250m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bible-redis-svc
+  namespace: bible-reference-ai
+spec:
+  type: ClusterIP
+  selector:
+    app: bible-redis
+  ports:
+    - name: redis
+      port: 6379
+      targetPort: 6379
+

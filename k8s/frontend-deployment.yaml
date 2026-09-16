@@ -1,0 +1,55 @@
+# Frontend Deployment + Service
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bible-frontend
+  namespace: bible-reference-ai
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bible-frontend
+  template:
+    metadata:
+      labels:
+        app: bible-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: bible-frontend:dev  # 替换成你推到 Artifact Registry / GCR 的镜像
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          env:
+            - name: NEXT_PUBLIC_API_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: bible-config
+                  key: NEXT_PUBLIC_API_BASE_URL
+            - name: BACKEND_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: bible-config
+                  key: BACKEND_URL
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bible-frontend-svc
+  namespace: bible-reference-ai
+spec:
+  type: ClusterIP
+  selector:
+    app: bible-frontend
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+

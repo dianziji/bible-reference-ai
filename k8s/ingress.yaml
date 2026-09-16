@@ -1,0 +1,29 @@
+# GKE HTTP(S) Ingress: / -> frontend, /api -> backend
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bible-ingress
+  namespace: bible-reference-ai
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: bible.local
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: bible-backend-svc
+                port:
+                  number: 8000
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bible-frontend-svc
+                port:
+                  number: 3000
+
