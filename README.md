@@ -2,7 +2,9 @@
 
 A retrieval-augmented scripture assistant. Ask a question in plain language and get an answer grounded in the King James Bible, with the exact verses it was drawn from returned alongside it.
 
-**Stack:** FastAPI · LangChain · OpenAI (`text-embedding-3-small`, `gpt-4o-mini`, `omni-moderation-latest`) · Pinecone · Next.js 16 · Ragas · Docker · Kubernetes
+**Stack:** FastAPI · LangChain · OpenAI (`text-embedding-3-small`, `gpt-4o`, `omni-moderation-latest`) · Pinecone · Next.js 16 · Ragas · Docker · Kubernetes
+
+> This repository is the initial snapshot; the production deployment has since added a caching layer.
 
 ## How it works
 
@@ -21,7 +23,7 @@ A retrieval-augmented scripture assistant. Ask a question in plain language and 
                  │
                  ├─ 1. moderation gate      OpenAI omni-moderation-latest; flagged input is rejected
                  ├─ 2. retrieve             LangChain retriever over Pinecone, k=5, score_threshold=0.5
-                 ├─ 3. generate             gpt-4o-mini, prompted to answer only from the retrieved verses
+                 ├─ 3. generate             gpt-4o, prompted to answer only from the retrieved verses
                  │                          and to say "not sure" when the context is insufficient
                  └─ 4. respond              { answer, verses: [{ book, chapter, verse, text }] }
 ```

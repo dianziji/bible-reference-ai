@@ -36,7 +36,7 @@ def generate_answer(question: str, context: str) -> str:
     user_content = f"Question:\n{question}\n\nRelevant Bible verses:\n{context}"
 
     completion = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-4o",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_content},

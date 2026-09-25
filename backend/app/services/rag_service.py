@@ -71,7 +71,7 @@ class RAGService:
         
         # 初始化 LLM
         self.llm = ChatOpenAI(
-            model_name="gpt-4o-mini",
+            model_name="gpt-4o",
             temperature=0,
             openai_api_key=OPENAI_API_KEY
         )
