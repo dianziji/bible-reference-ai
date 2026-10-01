@@ -1,21 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  async rewrites() {
-    const rawBackend =
-      process.env.BACKEND_URL ||
-      process.env.NEXT_PUBLIC_API_BASE_URL ||
-      "http://127.0.0.1:8000";
-
-    const backend = rawBackend.replace(/\/$/, "");
-
-    return [
-      {
-        source: "/api/:path*",
-        destination: `${backend}/api/:path*`,
-      },
-    ];
-  },
+  // Emits .next/standalone with only the files needed to run, so the Docker
+  // image ships a few MB of server code instead of the whole node_modules tree.
+  output: "standalone",
+  // The backend is reached through app/api/query/route.ts, which reads
+  // BACKEND_URL at request time. A rewrite here would bake the URL in at build
+  // time, which is wrong inside a container that only learns it from the ConfigMap.
 };
 
 export default nextConfig;

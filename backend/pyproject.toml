@@ -1,0 +1,46 @@
+[project]
+name = "bible-reference-ai"
+version = "0.2.0"
+description = "Retrieval-augmented scripture assistant over the KJV with two-tier caching"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2",
+    "python-dotenv>=1",
+    "openai>=3",
+    "pinecone>=7",
+    # Only the three LangChain packages the code imports; the `langchain`
+    # meta-package (and langgraph etc.) is not needed at runtime.
+    "langchain-core>=1",
+    "langchain-openai>=1",
+    "langchain-pinecone>=0.2.13",
+    "redis>=5",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "fakeredis>=2.26",
+    "httpx>=0.27",        # fastapi TestClient
+    "requests>=2.32",     # scripts/benchmark_cache.py
+]
+# Offline evaluation only (scripts/eval_with_ragas.py). Kept out of the
+# runtime image. ragas 0.4.x pins openai<2 through `instructor`, which is
+# incompatible with the openai 3.x SDK used at runtime, hence the ceiling.
+eval = [
+    "ragas>=0.3,<0.4",
+    # ragas 0.3 still imports langchain_community.chat_models.vertexai, removed in 0.4.2.
+    "langchain-community>=0.4,<0.4.2",
+    "pandas>=2",
+    "datasets>=3",
+    # imported unconditionally by ragas 0.3 (prompt/multi_modal_prompt.py) but not declared by it
+    "pillow>=10",
+]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

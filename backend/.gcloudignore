@@ -1,0 +1,10 @@
+# What `gcloud builds submit` leaves out of the upload (same as .dockerignore).
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.env
+app/logs/
+eval_results/
+tests/
+data/
