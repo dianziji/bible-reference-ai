@@ -1,4 +1,6 @@
-# Redis Deployment + Service (可选，如果你需要缓存)
+# Redis Deployment + Service
+# 后端的 L1 缓存（答案、query embedding、命中统计）。Redis 不可用时后端仍能正常回答，只是不走缓存。
+# 单副本、无持久化：缓存丢了只是重新生成一次，不需要 PVC。
 apiVersion: apps/v1
 kind: Deployment
 metadata:

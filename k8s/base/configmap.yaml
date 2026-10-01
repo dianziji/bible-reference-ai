@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bible-config
+  namespace: bible-reference-ai
+data:
+  # 后端用到的一些普通配置
+  PINECONE_INDEX_NAME: "bible-verses"
+  PINECONE_ENVIRONMENT: "us-east-1"  # 你实际用的 env
+  EN_TRANSLATION: "bsb"              # 英文问题检索 Berean Standard Bible 的 namespace
+  ZH_TRANSLATION: "cuv"              # 中文问题检索和合本（神版）的 namespace
+  TOP_K: "5"
+  SCORE_THRESHOLD: "0.40"            # 英文：离题问题 ≤ 0.38，相关 ≥ 0.47（按 golden set 校准）
+  SCORE_THRESHOLD_ZH: "0.45"         # 中文整体高 ~0.05
+
+  # 模型。改动任何影响答案内容的值都会让缓存 namespace 自动滚动（见 app/config.py）
+  CHAT_MODEL: "gpt-5-nano"       # 按 golden set 上的 Ragas 评测选定（见 README "Choosing the chat model"）
+  CHAT_REASONING_EFFORT: ""      # 留空 = 按模型族自动选最省的（gpt-5 → minimal，gpt-6 → none）
+  EMBEDDING_MODEL: "text-embedding-3-small"
+  MODERATION_MODEL: "omni-moderation-latest"
+
+  # 缓存。L1 = Redis（答案 / embedding），L2 = Pinecone 语义缓存 namespace
+  REDIS_HOST: "bible-redis-svc"
+  REDIS_PORT: "6379"
+  CACHE_ENABLED: "true"
+  CACHE_RESPONSE_TTL_SECONDS: "86400"     # 答案缓存 24h
+  CACHE_EMBEDDING_TTL_SECONDS: "604800"   # embedding 缓存 7d
+  SEMANTIC_CACHE_ENABLED: "true"
+  SEMANTIC_CACHE_THRESHOLD: "0.85"        # 同义改写 0.71–0.97，不同问题 ≤ 0.76；0.85 零误命中
+
+  # 限流（Redis 滑动窗口）。按客户端 IP + 全局两级；Redis 不可用时放行
+  RATE_LIMIT_PER_MINUTE: "20"
+  RATE_LIMIT_GLOBAL_PER_MINUTE: "60"      # 全站上限：把被刷时的最坏账单封顶（≈ 每小时 <$1）
+  CLIENT_IP_XFF_INDEX: "-1"               # X-Forwarded-For 里客户端 IP 的位置：nginx 在最后（-1），Google L7 LB 在倒数第二（-2，见 overlays/gke）
+
+  # 前端调用后端的地址（集群内直接走 Service，避免跨域）
+  BACKEND_URL: "http://bible-backend-svc.bible-reference-ai.svc.cluster.local:8000"
+  # 兼容旧配置（如果你前端代码还会读 NEXT_PUBLIC_*）
+  NEXT_PUBLIC_API_BASE_URL: "http://bible.local"

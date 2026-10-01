@@ -1,0 +1,71 @@
+# GKE deployment evidence — 2026-10-01T03:31Z
+
+$ gcloud container clusters list
+NAME   LOCATION  STATUS   CURRENT_MASTER_VERSION  CURRENT_NODE_COUNT  ENABLED
+bible  us-east1  RUNNING  1.35.8-gke.1225000      4                   True
+
+$ kubectl -n bible-reference-ai get deploy,pods,svc,ingress
+NAME                             READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS   IMAGES                                                                  SELECTOR
+deployment.apps/bible-backend    2/2     2            2           16m   backend      us-east1-docker.pkg.dev/bible-reference-ai/bible/backend:344d750-wip    app=bible-backend
+deployment.apps/bible-frontend   1/1     1            1           16m   frontend     us-east1-docker.pkg.dev/bible-reference-ai/bible/frontend:344d750-wip   app=bible-frontend
+deployment.apps/bible-redis      1/1     1            1           16m   redis        redis:7-alpine                                                          app=bible-redis
+
+NAME                                  READY   STATUS    RESTARTS   AGE     IP           NODE                             NOMINATED NODE   READINESS GATES
+pod/bible-backend-75f9d47d6d-2f7k8    1/1     Running   0          3m11s   10.93.0.86   gk3-bible-pool-1-9db5a0c2-sxv9   <none>           1/1
+pod/bible-backend-75f9d47d6d-gnjh6    1/1     Running   0          2m55s   10.93.1.6    gk3-bible-pool-1-9db5a0c2-rjq9   <none>           1/1
+pod/bible-frontend-78b74b58ff-4b6wf   1/1     Running   0          16m     10.93.0.83   gk3-bible-pool-1-9db5a0c2-sxv9   <none>           <none>
+pod/bible-redis-778b574685-wj2pb      1/1     Running   0          16m     10.93.0.81   gk3-bible-pool-1-9db5a0c2-sxv9   <none>           <none>
+
+NAME                         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+service/bible-backend-svc    ClusterIP   34.118.225.197   <none>        8000/TCP   16m   app=bible-backend
+service/bible-frontend-svc   ClusterIP   34.118.236.145   <none>        3000/TCP   16m   app=bible-frontend
+service/bible-redis-svc      ClusterIP   34.118.231.120   <none>        6379/TCP   16m   app=bible-redis
+
+NAME                                      CLASS    HOSTS   ADDRESS        PORTS   AGE
+ingress.networking.k8s.io/bible-ingress   <none>   *       34.111.72.60   80      16m
+
+$ kubectl -n bible-reference-ai describe ingress bible-ingress (backends)
+Address:          34.111.72.60
+Rules:
+              /api   bible-backend-svc:8000 (10.93.0.86:8000,10.93.1.6:8000)
+              /      bible-frontend-svc:3000 (10.93.0.83:3000)
+Annotations:  ingress.kubernetes.io/backends:
+                {"k8s1-6ccf59f0-bible-reference-ai-bible-backend-svc-800-9d85a811":"HEALTHY","k8s1-6ccf59f0-bible-reference-ai-bible-frontend-sv-300-f4488...
+
+$ gcloud artifacts docker images list
+Listing items under project bible-reference-ai, location us-east1, repository bible.
+
+IMAGE                                                      TAGS         CREATE_TIME
+us-east1-docker.pkg.dev/bible-reference-ai/bible/backend   344d750-wip  2026-10-01 03:11
+us-east1-docker.pkg.dev/bible-reference-ai/bible/frontend  344d750-wip  2026-10-01 03:12
+
+$ curl -s http://34.111.72.60/api/cache/stats
+{
+    "redis": "up",
+    "namespace": "bible:v1:e2050844",
+    "semantic_cache": {
+        "enabled": true,
+        "namespace": "semantic-cache-e2050844",
+        "threshold": 0.85
+    },
+    "exact_hits": 245,
+    "semantic_hits": 12,
+    "misses": 45,
+    "requests": 302,
+    "hit_rate": 0.851,
+    "config": {
+        "chat_model": "gpt-5-nano",
+        "embedding_model": "text-embedding-3-small",
+        "translations": {
+            "en": "bsb",
+            "zh": "cuv"
+        },
+        "top_k": 5,
+        "score_threshold": 0.4,
+        "score_threshold_zh": 0.45,
+        "response_ttl_seconds": 86400,
+        "embedding_ttl_seconds": 604800,
+        "rate_limit_per_minute": 20,
+        "rate_limit_global_per_minute": 60
+    }
+}

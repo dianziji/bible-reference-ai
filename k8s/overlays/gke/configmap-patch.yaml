@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bible-config
+  namespace: bible-reference-ai
+data:
+  CLIENT_IP_XFF_INDEX: "-2"

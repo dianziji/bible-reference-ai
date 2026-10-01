@@ -1,0 +1,29 @@
+# External Application Load Balancer (L7). It adds X-Forwarded-For, which the
+# backend's per-IP rate limit needs, and routes /api straight to the backend so
+# the browser and the API share one origin (no CORS, no second proxy hop).
+# Health checks are derived from each Deployment's readinessProbe.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bible-ingress
+  namespace: bible-reference-ai
+  annotations:
+    kubernetes.io/ingress.class: gce
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: bible-backend-svc
+                port:
+                  number: 8000
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: bible-frontend-svc
+                port:
+                  number: 3000

@@ -1,0 +1,9 @@
+# Local kind cluster: images are loaded straight into the node
+# (`kind load docker-image bible-backend:dev`), so the base's local image
+# names and IfNotPresent pull policy are already right. Traffic enters
+# through an nginx Ingress on bible.local.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - ingress.yaml

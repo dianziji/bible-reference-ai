@@ -1,0 +1,51 @@
+# GKE Autopilot. Images come from Artifact Registry, tagged with the git SHA
+# they were built from. Traffic enters through Google's external Application
+# Load Balancer (ingress.yaml): /api goes straight to the backend, everything
+# else to the frontend, so browser and API share one origin.
+#
+# The __PLACEHOLDERS__ are filled in by deploy.sh:
+#   kubectl kustomize . | sed ... | kubectl apply -f -
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../../base
+  - ingress.yaml
+
+images:
+  - name: bible-backend
+    newName: __REGION__-docker.pkg.dev/__PROJECT_ID__/bible/backend
+    newTag: __IMAGE_TAG__
+  - name: bible-frontend
+    newName: __REGION__-docker.pkg.dev/__PROJECT_ID__/bible/frontend
+    newTag: __IMAGE_TAG__
+
+patches:
+  # Container-native load balancing: the L7 LB targets pod IPs directly (NEGs)
+  # instead of hopping through a NodePort.
+  - target:
+      kind: Service
+      name: bible-backend-svc
+    patch: |-
+      - op: add
+        path: /metadata/annotations
+        value:
+          cloud.google.com/neg: '{"ingress": true}'
+  - target:
+      kind: Service
+      name: bible-frontend-svc
+    patch: |-
+      - op: add
+        path: /metadata/annotations
+        value:
+          cloud.google.com/neg: '{"ingress": true}'
+  # Google's L7 LB appends "<client>, <lb-ip>" to X-Forwarded-For, so the
+  # client is the second-to-last entry (nginx, the base default, puts it last).
+  - path: configmap-patch.yaml
+  # One frontend pod is plenty for a demo; the backend keeps its two replicas.
+  - target:
+      kind: Deployment
+      name: bible-frontend
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 1

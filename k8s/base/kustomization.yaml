@@ -1,0 +1,10 @@
+# Everything that is the same on every cluster. Cluster-specific bits (image
+# registry, how the frontend is exposed) live in overlays/<cluster>/.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - namespace.yaml
+  - configmap.yaml
+  - redis-deployment.yaml
+  - backend-deployment.yaml
+  - frontend-deployment.yaml
