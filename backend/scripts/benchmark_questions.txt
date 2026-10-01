@@ -1,0 +1,35 @@
+# One question per line. Lines starting with # are ignored.
+# Ordered roughly by how often such questions get asked; the mixed phase
+# samples them Zipf-style so the first lines dominate the traffic.
+What does the Bible say about love?
+Who is Jesus?
+What does the Bible say about forgiveness?
+How was the world created?
+What is faith?
+What does the Bible say about fear and anxiety?
+Why did God say "I am that I am"?
+What are the Ten Commandments?
+What does the Bible say about marriage?
+How should I pray?
+What happens after death according to the Bible?
+What does the Bible say about money and wealth?
+Who was Moses?
+What is the fruit of the Spirit?
+What does the Bible say about patience?
+Why did Jesus die on the cross?
+What is the greatest commandment?
+What does the Bible say about the poor?
+Who was David?
+What does the Bible say about wisdom?
+What is the armor of God?
+Did Jesus rise from the dead?
+What does the Bible say about anger?
+What does the Bible say about children?
+What is the Lord's Prayer?
+Who was Abraham?
+What does the Bible say about hope?
+What does the Bible say about the Sabbath?
+What does the Bible say about strength in hard times?
+What is grace?
+圣经关于爱是怎么说的？
+耶稣是谁？

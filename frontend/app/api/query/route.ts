@@ -22,11 +22,17 @@ export async function POST(req: Request) {
     );
   }
 
+  // Pass the client's address through so the backend's per-IP rate limit sees
+  // the browser, not this proxy. Hosts like Vercel set x-forwarded-for; when the
+  // frontend is reached directly there is nothing to forward.
+  const forwardedFor = req.headers.get("x-forwarded-for");
+
   try {
     const upstreamRes = await fetch(upstreamUrl, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        ...(forwardedFor ? { "X-Forwarded-For": forwardedFor } : {}),
       },
       body: bodyText,
     });

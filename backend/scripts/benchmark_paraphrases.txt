@@ -1,0 +1,19 @@
+# Paraphrases of questions in benchmark_questions.txt. None of these match an
+# original exactly, so they can only be served by the semantic cache (L2).
+# How many come back HIT-SEMANTIC vs MISS shows where the similarity threshold sits.
+What does scripture say about love?
+Who was Jesus Christ?
+What does the Bible teach about forgiving others?
+How did God create the world?
+What is faith according to the Bible?
+What does the Bible say about being afraid or anxious?
+What does "I am that I am" mean?
+What are the 10 commandments?
+What does the Bible teach about marriage?
+How do I pray?
+What does the Bible say happens when we die?
+What does the Bible say about riches?
+Who was Moses in the Bible?
+What are the fruits of the Spirit?
+What does the Bible teach about patience?
+Why was Jesus crucified?

@@ -1,0 +1,5615 @@
+{
+  "ran_at": "2026-10-01T02:16:45.982989+00:00",
+  "base_url": "http://127.0.0.1:8000",
+  "concurrency": 4,
+  "config": {
+    "chat_model": "gpt-5-nano",
+    "embedding_model": "text-embedding-3-small",
+    "translations": {
+      "en": "bsb",
+      "zh": "cuv"
+    },
+    "top_k": 5,
+    "score_threshold": 0.4,
+    "score_threshold_zh": 0.45,
+    "response_ttl_seconds": 86400,
+    "embedding_ttl_seconds": 604800,
+    "rate_limit_per_minute": 0,
+    "rate_limit_global_per_minute": 0
+  },
+  "semantic_cache": {
+    "enabled": true,
+    "namespace": "semantic-cache-e2050844",
+    "threshold": 0.85
+  },
+  "server_stats_after": {
+    "exact_hits": 241,
+    "semantic_hits": 12,
+    "misses": 47,
+    "requests": 300,
+    "hit_rate": 0.8433
+  },
+  "phases": [
+    {
+      "phase": "cold",
+      "requests": 32,
+      "ok": 32,
+      "errors": 0,
+      "outcomes": {
+        "MISS": 32
+      },
+      "hit_rate": 0.0,
+      "client_ms": {
+        "p50": 2948.9768750499934,
+        "p95": 4321.5316670248285,
+        "max": 5294.868375058286,
+        "mean": 2856.4804713860212
+      },
+      "server_ms": {
+        "p50": 2825.4,
+        "p95": 4309.5
+      },
+      "stage_mean_ms": {
+        "embed": 249.7,
+        "generate": 2444.0,
+        "moderation": 263.6,
+        "retrieve": 77.8,
+        "semantic_lookup": 65.4
+      },
+      "upstream_calls": 96,
+      "upstream_calls_without_cache": 96,
+      "upstream_calls_avoided_pct": 0.0,
+      "wall_seconds": 25.08,
+      "throughput_rps": 1.28
+    },
+    {
+      "phase": "warm-exact",
+      "requests": 32,
+      "ok": 32,
+      "errors": 0,
+      "outcomes": {
+        "HIT-EXACT": 32
+      },
+      "hit_rate": 1.0,
+      "client_ms": {
+        "p50": 5.805624998174608,
+        "p95": 9.718500077724457,
+        "max": 9.8953329725191,
+        "mean": 5.677341090631671
+      },
+      "server_ms": {
+        "p50": 1.1,
+        "p95": 1.7
+      },
+      "stage_mean_ms": {},
+      "upstream_calls": 0,
+      "upstream_calls_without_cache": 96,
+      "upstream_calls_avoided_pct": 100.0,
+      "wall_seconds": 0.05,
+      "throughput_rps": 652.55
+    },
+    {
+      "phase": "warm-semantic",
+      "requests": 16,
+      "ok": 16,
+      "errors": 0,
+      "outcomes": {
+        "MISS": 7,
+        "HIT-SEMANTIC": 9
+      },
+      "hit_rate": 0.5625,
+      "client_ms": {
+        "p50": 341.7258330155164,
+        "p95": 2420.043124933727,
+        "max": 2904.7285409178585,
+        "mean": 1170.566442575364
+      },
+      "server_ms": {
+        "p50": 336.6,
+        "p95": 2411.6
+      },
+      "stage_mean_ms": {
+        "embed": 225.6,
+        "generate": 1978.5,
+        "moderation": 225.3,
+        "retrieve": 50.9,
+        "semantic_lookup": 47.2
+      },
+      "upstream_calls": 39,
+      "upstream_calls_without_cache": 48,
+      "upstream_calls_avoided_pct": 18.8,
+      "wall_seconds": 5.3,
+      "throughput_rps": 3.02
+    },
+    {
+      "phase": "mixed",
+      "requests": 300,
+      "ok": 300,
+      "errors": 0,
+      "outcomes": {
+        "MISS": 47,
+        "HIT-EXACT": 241,
+        "HIT-SEMANTIC": 12
+      },
+      "hit_rate": 0.8433,
+      "client_ms": {
+        "p50": 4.8902080161497,
+        "p95": 2656.791332992725,
+        "max": 6982.114874990657,
+        "mean": 403.51338833376457
+      },
+      "server_ms": {
+        "p50": 1.9,
+        "p95": 2646.9
+      },
+      "stage_mean_ms": {
+        "embed": 166.0,
+        "generate": 2221.7,
+        "moderation": 180.1,
+        "retrieve": 48.1,
+        "semantic_lookup": 40.5
+      },
+      "upstream_calls": 165,
+      "upstream_calls_without_cache": 900,
+      "upstream_calls_avoided_pct": 81.7,
+      "wall_seconds": 31.94,
+      "throughput_rps": 9.39
+    }
+  ],
+  "requests": [
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 3355.682334047742,
+      "server_ms": 3084.6,
+      "timings_ms": {
+        "embed": 405.5,
+        "retrieve": 174.9,
+        "moderation": 586.6,
+        "semantic_lookup": 144.4,
+        "generate": 2489.0,
+        "total": 3084.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 3086.852250038646,
+      "server_ms": 2825.4,
+      "timings_ms": {
+        "embed": 409.1,
+        "retrieve": 198.7,
+        "moderation": 420.0,
+        "semantic_lookup": 195.6,
+        "generate": 2185.2,
+        "total": 2825.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 3765.812083031051,
+      "server_ms": 3500.2,
+      "timings_ms": {
+        "embed": 464.2,
+        "retrieve": 246.6,
+        "moderation": 402.2,
+        "semantic_lookup": 177.5,
+        "generate": 2762.6,
+        "total": 3500.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2436.836291104555,
+      "server_ms": 2176.0,
+      "timings_ms": {
+        "embed": 505.7,
+        "retrieve": 167.9,
+        "moderation": 317.5,
+        "semantic_lookup": 170.6,
+        "generate": 1469.0,
+        "total": 2176.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is faith?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 3211.2844589864835,
+      "server_ms": 3205.1,
+      "timings_ms": {
+        "embed": 228.5,
+        "retrieve": 93.6,
+        "moderation": 244.0,
+        "semantic_lookup": 36.0,
+        "generate": 2873.9,
+        "total": 3205.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about fear and anxiety?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 3470.0916670262814,
+      "server_ms": 3464.0,
+      "timings_ms": {
+        "embed": 315.8,
+        "retrieve": 50.6,
+        "moderation": 136.9,
+        "semantic_lookup": 42.2,
+        "generate": 3093.9,
+        "total": 3464.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did God say \"I am that I am\"?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2225.341208046302,
+      "server_ms": 2213.9,
+      "timings_ms": {
+        "embed": 284.4,
+        "retrieve": 48.5,
+        "moderation": 341.2,
+        "semantic_lookup": 40.0,
+        "generate": 1863.0,
+        "total": 2213.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the Ten Commandments?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1639.3772080773488,
+      "server_ms": 1627.8,
+      "timings_ms": {
+        "embed": 188.9,
+        "retrieve": 53.3,
+        "moderation": 117.7,
+        "semantic_lookup": 80.1,
+        "generate": 1344.7,
+        "total": 1627.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about marriage?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2948.9768750499934,
+      "server_ms": 2934.9,
+      "timings_ms": {
+        "embed": 189.7,
+        "retrieve": 44.7,
+        "moderation": 289.7,
+        "semantic_lookup": 36.0,
+        "generate": 2640.9,
+        "total": 2934.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How should I pray?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1827.6289160130545,
+      "server_ms": 1816.5,
+      "timings_ms": {
+        "embed": 213.6,
+        "retrieve": 58.1,
+        "moderation": 196.6,
+        "semantic_lookup": 38.0,
+        "generate": 1539.4,
+        "total": 1816.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What happens after death according to the Bible?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 3854.620874975808,
+      "server_ms": 3843.3,
+      "timings_ms": {
+        "embed": 186.7,
+        "retrieve": 139.9,
+        "moderation": 185.9,
+        "semantic_lookup": 38.9,
+        "generate": 3508.7,
+        "total": 3843.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about money and wealth?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 5294.868375058286,
+      "server_ms": 5289.3,
+      "timings_ms": {
+        "embed": 178.5,
+        "retrieve": 60.3,
+        "moderation": 419.4,
+        "semantic_lookup": 81.1,
+        "generate": 4865.2,
+        "total": 5289.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Moses?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 3263.563000014983,
+      "server_ms": 3252.0,
+      "timings_ms": {
+        "embed": 221.3,
+        "retrieve": 103.9,
+        "moderation": 236.0,
+        "semantic_lookup": 54.6,
+        "generate": 2919.0,
+        "total": 3252.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the fruit of the Spirit?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1391.5334589546546,
+      "server_ms": 1372.2,
+      "timings_ms": {
+        "embed": 207.2,
+        "retrieve": 45.3,
+        "moderation": 206.1,
+        "semantic_lookup": 42.9,
+        "generate": 1113.9,
+        "total": 1372.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about patience?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 3203.6020000232384,
+      "server_ms": 3185.0,
+      "timings_ms": {
+        "embed": 217.2,
+        "retrieve": 50.8,
+        "moderation": 329.7,
+        "semantic_lookup": 46.1,
+        "generate": 2845.2,
+        "total": 3185.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did Jesus die on the cross?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1647.1299580298364,
+      "server_ms": 1635.6,
+      "timings_ms": {
+        "embed": 234.7,
+        "retrieve": 48.7,
+        "moderation": 298.4,
+        "semantic_lookup": 45.4,
+        "generate": 1332.6,
+        "total": 1635.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the greatest commandment?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1950.6687079556286,
+      "server_ms": 1939.3,
+      "timings_ms": {
+        "embed": 191.3,
+        "retrieve": 93.7,
+        "moderation": 126.5,
+        "semantic_lookup": 125.3,
+        "generate": 1605.5,
+        "total": 1939.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about the poor?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 3135.282375034876,
+      "server_ms": 3123.4,
+      "timings_ms": {
+        "embed": 200.2,
+        "retrieve": 47.1,
+        "moderation": 321.6,
+        "semantic_lookup": 45.3,
+        "generate": 2795.9,
+        "total": 3123.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was David?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2982.3137919884175,
+      "server_ms": 2968.7,
+      "timings_ms": {
+        "embed": 266.0,
+        "retrieve": 54.0,
+        "moderation": 211.4,
+        "semantic_lookup": 47.2,
+        "generate": 2641.8,
+        "total": 2968.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about wisdom?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2409.945582970977,
+      "server_ms": 2394.4,
+      "timings_ms": {
+        "embed": 190.3,
+        "retrieve": 54.0,
+        "moderation": 110.6,
+        "semantic_lookup": 39.5,
+        "generate": 2143.1,
+        "total": 2394.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the armor of God?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2811.7602500133216,
+      "server_ms": 2794.0,
+      "timings_ms": {
+        "embed": 257.9,
+        "retrieve": 44.5,
+        "moderation": 234.8,
+        "semantic_lookup": 81.3,
+        "generate": 2446.3,
+        "total": 2794.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Did Jesus rise from the dead?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2039.879749994725,
+      "server_ms": 2030.9,
+      "timings_ms": {
+        "embed": 186.9,
+        "retrieve": 49.2,
+        "moderation": 218.0,
+        "semantic_lookup": 44.6,
+        "generate": 1775.4,
+        "total": 2030.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about anger?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 3346.9080830691382,
+      "server_ms": 3337.7,
+      "timings_ms": {
+        "embed": 226.9,
+        "retrieve": 48.6,
+        "moderation": 131.0,
+        "semantic_lookup": 76.2,
+        "generate": 3026.4,
+        "total": 3337.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about children?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2023.3139579650015,
+      "server_ms": 2013.0,
+      "timings_ms": {
+        "embed": 179.3,
+        "retrieve": 47.7,
+        "moderation": 157.6,
+        "semantic_lookup": 43.3,
+        "generate": 1781.0,
+        "total": 2013.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the Lord's Prayer?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1329.0407499298453,
+      "server_ms": 1315.2,
+      "timings_ms": {
+        "embed": 252.2,
+        "retrieve": 87.6,
+        "moderation": 144.9,
+        "semantic_lookup": 35.2,
+        "generate": 969.2,
+        "total": 1315.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Abraham?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2499.0725410170853,
+      "server_ms": 2493.8,
+      "timings_ms": {
+        "embed": 281.0,
+        "retrieve": 83.3,
+        "moderation": 770.7,
+        "semantic_lookup": 47.1,
+        "generate": 1717.3,
+        "total": 2493.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about hope?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 4499.583541997708,
+      "server_ms": 4476.3,
+      "timings_ms": {
+        "embed": 237.1,
+        "retrieve": 53.2,
+        "moderation": 156.5,
+        "semantic_lookup": 35.5,
+        "generate": 4173.2,
+        "total": 4476.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about the Sabbath?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2223.4331669751555,
+      "server_ms": 2212.9,
+      "timings_ms": {
+        "embed": 205.2,
+        "retrieve": 49.3,
+        "moderation": 228.0,
+        "semantic_lookup": 43.9,
+        "generate": 1951.1,
+        "total": 2212.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about strength in hard times?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2569.5716670015827,
+      "server_ms": 2562.6,
+      "timings_ms": {
+        "embed": 165.6,
+        "retrieve": 48.9,
+        "moderation": 148.1,
+        "semantic_lookup": 39.7,
+        "generate": 2341.7,
+        "total": 2562.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is grace?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2385.405584005639,
+      "server_ms": 2370.7,
+      "timings_ms": {
+        "embed": 191.5,
+        "retrieve": 45.2,
+        "moderation": 207.5,
+        "semantic_lookup": 41.5,
+        "generate": 2126.1,
+        "total": 2370.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "圣经关于爱是怎么说的？",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 4256.462708930485,
+      "server_ms": 4246.1,
+      "timings_ms": {
+        "embed": 313.3,
+        "retrieve": 47.9,
+        "moderation": 230.8,
+        "semantic_lookup": 42.7,
+        "generate": 3876.8,
+        "total": 4246.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "耶稣是谁？",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 4321.5316670248285,
+      "server_ms": 4309.5,
+      "timings_ms": {
+        "embed": 194.1,
+        "retrieve": 50.5,
+        "moderation": 310.1,
+        "semantic_lookup": 34.2,
+        "generate": 3991.6,
+        "total": 4309.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 9.169457945972681,
+      "server_ms": 1.8,
+      "timings_ms": {
+        "total": 1.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 8.478750009089708,
+      "server_ms": 1.8,
+      "timings_ms": {
+        "total": 1.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.985665928572416,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 8.374832919798791,
+      "server_ms": 1.3,
+      "timings_ms": {
+        "total": 1.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is faith?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 9.8953329725191,
+      "server_ms": 1.7,
+      "timings_ms": {
+        "total": 1.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about fear and anxiety?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 9.718500077724457,
+      "server_ms": 1.4,
+      "timings_ms": {
+        "total": 1.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did God say \"I am that I am\"?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 9.872250026091933,
+      "server_ms": 1.7,
+      "timings_ms": {
+        "total": 1.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the Ten Commandments?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 8.74375004786998,
+      "server_ms": 1.4,
+      "timings_ms": {
+        "total": 1.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about marriage?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.257125060074031,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How should I pray?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.63845899887383,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What happens after death according to the Bible?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.815375014208257,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about money and wealth?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.140874931588769,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Moses?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.808457965031266,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the fruit of the Spirit?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.73191705532372,
+      "server_ms": 1.3,
+      "timings_ms": {
+        "total": 1.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about patience?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.296832950785756,
+      "server_ms": 1.2,
+      "timings_ms": {
+        "total": 1.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did Jesus die on the cross?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.589125000871718,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the greatest commandment?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.805624998174608,
+      "server_ms": 1.2,
+      "timings_ms": {
+        "total": 1.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about the poor?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.17625005543232,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was David?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.812500021420419,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about wisdom?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.864374921657145,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the armor of God?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.318125080317259,
+      "server_ms": 0.6,
+      "timings_ms": {
+        "total": 0.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Did Jesus rise from the dead?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.6918330006301403,
+      "server_ms": 0.6,
+      "timings_ms": {
+        "total": 0.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about anger?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.41970897372812,
+      "server_ms": 0.7,
+      "timings_ms": {
+        "total": 0.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about children?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.040792002342641,
+      "server_ms": 0.7,
+      "timings_ms": {
+        "total": 0.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the Lord's Prayer?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.031750024296343,
+      "server_ms": 0.6,
+      "timings_ms": {
+        "total": 0.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Abraham?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.322000033222139,
+      "server_ms": 0.5,
+      "timings_ms": {
+        "total": 0.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about hope?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.763500018976629,
+      "server_ms": 0.7,
+      "timings_ms": {
+        "total": 0.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about the Sabbath?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.8478329768404365,
+      "server_ms": 0.6,
+      "timings_ms": {
+        "total": 0.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about strength in hard times?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.5133749479427934,
+      "server_ms": 0.8,
+      "timings_ms": {
+        "total": 0.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is grace?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.604833036661148,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "圣经关于爱是怎么说的？",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.114708000794053,
+      "server_ms": 0.9,
+      "timings_ms": {
+        "total": 0.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "耶稣是谁？",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.830999903380871,
+      "server_ms": 0.8,
+      "timings_ms": {
+        "total": 0.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does scripture say about love?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2904.7285409178585,
+      "server_ms": 2894.6,
+      "timings_ms": {
+        "embed": 328.3,
+        "retrieve": 32.5,
+        "moderation": 178.8,
+        "semantic_lookup": 31.1,
+        "generate": 2526.2,
+        "total": 2894.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Jesus Christ?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2264.41300008446,
+      "server_ms": 2255.8,
+      "timings_ms": {
+        "embed": 276.2,
+        "retrieve": 51.7,
+        "moderation": 257.3,
+        "semantic_lookup": 39.7,
+        "generate": 1920.9,
+        "total": 2255.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible teach about forgiving others?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 341.7258330155164,
+      "server_ms": 336.6,
+      "timings_ms": {
+        "embed": 251.2,
+        "retrieve": 82.4,
+        "moderation": 233.6,
+        "semantic_lookup": 79.3,
+        "total": 336.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.8592,
+      "verses": 5
+    },
+    {
+      "question": "How did God create the world?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2054.9842080799863,
+      "server_ms": 2038.7,
+      "timings_ms": {
+        "embed": 203.6,
+        "retrieve": 46.7,
+        "moderation": 183.2,
+        "semantic_lookup": 78.1,
+        "generate": 1747.5,
+        "total": 2038.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is faith according to the Bible?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2307.3154580779374,
+      "server_ms": 2298.9,
+      "timings_ms": {
+        "embed": 180.6,
+        "retrieve": 50.6,
+        "moderation": 379.9,
+        "semantic_lookup": 46.1,
+        "generate": 1911.0,
+        "total": 2298.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about being afraid or anxious?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 245.13504200149328,
+      "server_ms": 241.5,
+      "timings_ms": {
+        "embed": 190.2,
+        "retrieve": 44.5,
+        "moderation": 160.3,
+        "semantic_lookup": 36.8,
+        "total": 241.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.9294,
+      "verses": 5
+    },
+    {
+      "question": "What does \"I am that I am\" mean?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2394.270749995485,
+      "server_ms": 2379.5,
+      "timings_ms": {
+        "embed": 189.2,
+        "retrieve": 44.4,
+        "moderation": 208.0,
+        "semantic_lookup": 80.1,
+        "generate": 2089.3,
+        "total": 2379.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 3
+    },
+    {
+      "question": "What are the 10 commandments?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 294.7830830235034,
+      "server_ms": 290.5,
+      "timings_ms": {
+        "embed": 235.6,
+        "retrieve": 50.7,
+        "moderation": 227.4,
+        "semantic_lookup": 43.5,
+        "total": 290.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.9455,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible teach about marriage?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 280.4561660159379,
+      "server_ms": 276.3,
+      "timings_ms": {
+        "embed": 216.0,
+        "retrieve": 42.0,
+        "moderation": 265.9,
+        "semantic_lookup": 35.6,
+        "total": 276.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.9313,
+      "verses": 5
+    },
+    {
+      "question": "How do I pray?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 291.7819580761716,
+      "server_ms": 288.6,
+      "timings_ms": {
+        "embed": 238.0,
+        "retrieve": 40.9,
+        "moderation": 249.9,
+        "semantic_lookup": 41.5,
+        "total": 288.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.9044,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say happens when we die?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2420.043124933727,
+      "server_ms": 2411.6,
+      "timings_ms": {
+        "embed": 221.0,
+        "retrieve": 88.0,
+        "moderation": 210.5,
+        "semantic_lookup": 46.0,
+        "generate": 2098.2,
+        "total": 2411.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about riches?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 264.8711249930784,
+      "server_ms": 262.0,
+      "timings_ms": {
+        "embed": 214.9,
+        "retrieve": 39.8,
+        "moderation": 182.9,
+        "semantic_lookup": 34.8,
+        "total": 262.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.8771,
+      "verses": 5
+    },
+    {
+      "question": "Who was Moses in the Bible?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 273.0879170121625,
+      "server_ms": 269.4,
+      "timings_ms": {
+        "embed": 219.2,
+        "retrieve": 47.2,
+        "moderation": 147.7,
+        "semantic_lookup": 38.6,
+        "total": 269.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.8793,
+      "verses": 5
+    },
+    {
+      "question": "What are the fruits of the Spirit?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 274.8216249747202,
+      "server_ms": 271.5,
+      "timings_ms": {
+        "embed": 208.1,
+        "retrieve": 56.5,
+        "moderation": 241.0,
+        "semantic_lookup": 40.0,
+        "total": 271.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.943,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible teach about patience?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 282.0280829910189,
+      "server_ms": 277.7,
+      "timings_ms": {
+        "embed": 219.6,
+        "retrieve": 48.4,
+        "moderation": 215.0,
+        "semantic_lookup": 44.8,
+        "total": 277.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.9659,
+      "verses": 5
+    },
+    {
+      "question": "Why was Jesus crucified?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1834.617167012766,
+      "server_ms": 1826.2,
+      "timings_ms": {
+        "embed": 217.2,
+        "retrieve": 48.3,
+        "moderation": 263.8,
+        "semantic_lookup": 38.7,
+        "generate": 1556.3,
+        "total": 1826.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How should I pray?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1837.3266248963773,
+      "server_ms": 1823.2,
+      "timings_ms": {
+        "embed": 214.6,
+        "retrieve": 49.1,
+        "moderation": 170.0,
+        "semantic_lookup": 35.3,
+        "generate": 1547.9,
+        "total": 1823.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2372.935458086431,
+      "server_ms": 2360.6,
+      "timings_ms": {
+        "embed": 244.5,
+        "retrieve": 52.5,
+        "moderation": 125.7,
+        "semantic_lookup": 39.7,
+        "generate": 2054.7,
+        "total": 2360.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2643.25133303646,
+      "server_ms": 2631.8,
+      "timings_ms": {
+        "embed": 179.8,
+        "retrieve": 46.1,
+        "moderation": 298.3,
+        "semantic_lookup": 43.5,
+        "generate": 2328.4,
+        "total": 2631.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 4134.858457953669,
+      "server_ms": 4118.7,
+      "timings_ms": {
+        "embed": 255.7,
+        "retrieve": 137.8,
+        "moderation": 210.4,
+        "semantic_lookup": 75.7,
+        "generate": 3716.7,
+        "total": 4118.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about patience?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2450.7203330285847,
+      "server_ms": 2439.0,
+      "timings_ms": {
+        "embed": 189.5,
+        "retrieve": 51.5,
+        "moderation": 205.2,
+        "semantic_lookup": 41.8,
+        "generate": 2186.6,
+        "total": 2439.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What happens after death according to the Bible?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2932.8194999834523,
+      "server_ms": 2924.4,
+      "timings_ms": {
+        "embed": 171.4,
+        "retrieve": 50.5,
+        "moderation": 117.8,
+        "semantic_lookup": 36.8,
+        "generate": 2695.2,
+        "total": 2924.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is grace?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1955.0114579033107,
+      "server_ms": 1948.6,
+      "timings_ms": {
+        "embed": 188.7,
+        "retrieve": 45.7,
+        "moderation": 257.0,
+        "semantic_lookup": 41.9,
+        "generate": 1687.0,
+        "total": 1948.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.412250011228025,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1473.2823329977691,
+      "server_ms": 1463.5,
+      "timings_ms": {
+        "embed": 190.7,
+        "retrieve": 45.1,
+        "moderation": 114.2,
+        "semantic_lookup": 42.7,
+        "generate": 1222.5,
+        "total": 1463.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 10.13999991118908,
+      "server_ms": 5.3,
+      "timings_ms": {
+        "total": 5.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.441249999217689,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is faith?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2133.5842079715803,
+      "server_ms": 2126.8,
+      "timings_ms": {
+        "embed": 210.5,
+        "retrieve": 46.9,
+        "moderation": 271.8,
+        "semantic_lookup": 37.3,
+        "generate": 1850.5,
+        "total": 2126.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.3210419826209545,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.7228340040892363,
+      "server_ms": 0.7,
+      "timings_ms": {
+        "total": 0.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How should I pray?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.828749991953373,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about fear and anxiety?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2485.2538750274107,
+      "server_ms": 2476.6,
+      "timings_ms": {
+        "embed": 201.3,
+        "retrieve": 38.5,
+        "moderation": 112.1,
+        "semantic_lookup": 32.6,
+        "generate": 2231.0,
+        "total": 2476.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.978082957677543,
+      "server_ms": 1.4,
+      "timings_ms": {
+        "total": 1.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the Ten Commandments?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2015.1082910597324,
+      "server_ms": 2003.9,
+      "timings_ms": {
+        "embed": 271.7,
+        "retrieve": 57.6,
+        "moderation": 287.7,
+        "semantic_lookup": 61.3,
+        "generate": 1663.4,
+        "total": 2003.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the armor of God?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1607.2833329671994,
+      "server_ms": 1600.8,
+      "timings_ms": {
+        "embed": 184.5,
+        "retrieve": 44.6,
+        "moderation": 159.2,
+        "semantic_lookup": 34.4,
+        "generate": 1362.8,
+        "total": 1600.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.4600419932976365,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about wisdom?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1859.9991250084713,
+      "server_ms": 1852.8,
+      "timings_ms": {
+        "embed": 156.4,
+        "retrieve": 46.9,
+        "moderation": 111.7,
+        "semantic_lookup": 39.7,
+        "generate": 1645.1,
+        "total": 1852.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Moses?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1275.3382080700248,
+      "server_ms": 1268.5,
+      "timings_ms": {
+        "embed": 174.5,
+        "retrieve": 49.6,
+        "moderation": 225.9,
+        "semantic_lookup": 45.1,
+        "generate": 1038.1,
+        "total": 1268.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2838.960957946256,
+      "server_ms": 2827.9,
+      "timings_ms": {
+        "embed": 181.4,
+        "retrieve": 43.9,
+        "moderation": 290.7,
+        "semantic_lookup": 37.2,
+        "generate": 2526.3,
+        "total": 2827.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.856999942101538,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the 10 commandments?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 228.12487499322742,
+      "server_ms": 225.6,
+      "timings_ms": {
+        "embed": 180.5,
+        "retrieve": 43.0,
+        "moderation": 163.6,
+        "semantic_lookup": 37.8,
+        "total": 225.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.9455,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 3126.778666046448,
+      "server_ms": 3118.7,
+      "timings_ms": {
+        "embed": 0.5,
+        "retrieve": 47.9,
+        "moderation": 173.9,
+        "semantic_lookup": 35.6,
+        "generate": 2941.2,
+        "total": 3118.7
+      },
+      "embedding_cached": true,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.385083029977977,
+      "server_ms": 2.1,
+      "timings_ms": {
+        "total": 2.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.649082944728434,
+      "server_ms": 1.9,
+      "timings_ms": {
+        "total": 1.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the Lord's Prayer?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2148.631375050172,
+      "server_ms": 2138.3,
+      "timings_ms": {
+        "embed": 157.9,
+        "retrieve": 47.5,
+        "moderation": 170.6,
+        "semantic_lookup": 32.3,
+        "generate": 1928.6,
+        "total": 2138.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the Ten Commandments?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.502292023971677,
+      "server_ms": 1.4,
+      "timings_ms": {
+        "total": 1.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the armor of God?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.888417035341263,
+      "server_ms": 1.9,
+      "timings_ms": {
+        "total": 1.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about patience?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.327416954562068,
+      "server_ms": 1.2,
+      "timings_ms": {
+        "total": 1.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about fear and anxiety?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.5013329945504665,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say happens when we die?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2065.392625052482,
+      "server_ms": 2046.9,
+      "timings_ms": {
+        "embed": 185.6,
+        "retrieve": 40.8,
+        "moderation": 162.6,
+        "semantic_lookup": 32.3,
+        "generate": 1815.7,
+        "total": 2046.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.948874914087355,
+      "server_ms": 2.8,
+      "timings_ms": {
+        "total": 2.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did God say \"I am that I am\"?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1838.936374988407,
+      "server_ms": 1830.8,
+      "timings_ms": {
+        "embed": 191.8,
+        "retrieve": 50.6,
+        "moderation": 114.5,
+        "semantic_lookup": 43.2,
+        "generate": 1583.0,
+        "total": 1830.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about anger?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2108.0545420991257,
+      "server_ms": 2090.8,
+      "timings_ms": {
+        "embed": 206.7,
+        "retrieve": 44.7,
+        "moderation": 200.8,
+        "semantic_lookup": 36.4,
+        "generate": 1833.8,
+        "total": 2090.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about marriage?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2689.9500410072505,
+      "server_ms": 2677.8,
+      "timings_ms": {
+        "embed": 185.9,
+        "retrieve": 41.8,
+        "moderation": 115.2,
+        "semantic_lookup": 45.3,
+        "generate": 2438.8,
+        "total": 2677.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Abraham?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1923.558457987383,
+      "server_ms": 1913.3,
+      "timings_ms": {
+        "embed": 202.7,
+        "retrieve": 43.2,
+        "moderation": 266.2,
+        "semantic_lookup": 37.4,
+        "generate": 1638.3,
+        "total": 1913.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did God say \"I am that I am\"?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.422334001399577,
+      "server_ms": 3.2,
+      "timings_ms": {
+        "total": 3.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Moses?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.6638330202549696,
+      "server_ms": 1.2,
+      "timings_ms": {
+        "total": 1.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.6896669771522284,
+      "server_ms": 1.4,
+      "timings_ms": {
+        "total": 1.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.7598750786855817,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.242333001457155,
+      "server_ms": 1.7,
+      "timings_ms": {
+        "total": 1.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.141208017244935,
+      "server_ms": 2.0,
+      "timings_ms": {
+        "total": 2.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.650540951639414,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.56220905855298,
+      "server_ms": 1.9,
+      "timings_ms": {
+        "total": 1.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.405999952927232,
+      "server_ms": 2.1,
+      "timings_ms": {
+        "total": 2.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How should I pray?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.8007079856470227,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.024374997243285,
+      "server_ms": 1.7,
+      "timings_ms": {
+        "total": 1.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.769458064809442,
+      "server_ms": 4.1,
+      "timings_ms": {
+        "total": 4.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.966833930462599,
+      "server_ms": 1.4,
+      "timings_ms": {
+        "total": 1.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.619292078539729,
+      "server_ms": 3.0,
+      "timings_ms": {
+        "total": 3.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is faith according to the Bible?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 3197.8984579909593,
+      "server_ms": 3186.7,
+      "timings_ms": {
+        "embed": 185.9,
+        "retrieve": 51.0,
+        "moderation": 120.6,
+        "semantic_lookup": 46.3,
+        "generate": 2943.2,
+        "total": 3186.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How should I pray?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.507541915401816,
+      "server_ms": 3.1,
+      "timings_ms": {
+        "total": 3.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the Ten Commandments?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 8.578000008128583,
+      "server_ms": 2.7,
+      "timings_ms": {
+        "total": 2.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.83804096095264,
+      "server_ms": 2.4,
+      "timings_ms": {
+        "total": 2.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the fruit of the Spirit?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1252.2547090193257,
+      "server_ms": 1242.6,
+      "timings_ms": {
+        "embed": 192.5,
+        "retrieve": 34.5,
+        "moderation": 155.6,
+        "semantic_lookup": 34.3,
+        "generate": 1011.3,
+        "total": 1242.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.8088340340182185,
+      "server_ms": 3.0,
+      "timings_ms": {
+        "total": 3.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.005708059296012,
+      "server_ms": 2.3,
+      "timings_ms": {
+        "total": 2.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the fruits of the Spirit?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2328.553874976933,
+      "server_ms": 2317.7,
+      "timings_ms": {
+        "embed": 199.4,
+        "retrieve": 50.9,
+        "moderation": 103.2,
+        "semantic_lookup": 48.8,
+        "generate": 2062.9,
+        "total": 2317.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How should I pray?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 14.629666926339269,
+      "server_ms": 11.2,
+      "timings_ms": {
+        "total": 11.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did God say \"I am that I am\"?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.074041990563273,
+      "server_ms": 4.7,
+      "timings_ms": {
+        "total": 4.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about money and wealth?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2879.7270000213757,
+      "server_ms": 2872.4,
+      "timings_ms": {
+        "embed": 201.0,
+        "retrieve": 35.2,
+        "moderation": 160.3,
+        "semantic_lookup": 33.6,
+        "generate": 2632.8,
+        "total": 2872.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about children?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 4624.605624936521,
+      "server_ms": 4609.7,
+      "timings_ms": {
+        "embed": 212.3,
+        "retrieve": 37.0,
+        "moderation": 159.6,
+        "semantic_lookup": 35.8,
+        "generate": 4355.6,
+        "total": 4609.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about the poor?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2346.854667062871,
+      "server_ms": 2329.7,
+      "timings_ms": {
+        "embed": 179.6,
+        "retrieve": 51.4,
+        "moderation": 159.3,
+        "semantic_lookup": 37.1,
+        "generate": 2092.7,
+        "total": 2329.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.755042006261647,
+      "server_ms": 3.9,
+      "timings_ms": {
+        "total": 3.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.17949999589473,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.9674998950213194,
+      "server_ms": 1.2,
+      "timings_ms": {
+        "total": 1.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.696166979148984,
+      "server_ms": 1.3,
+      "timings_ms": {
+        "total": 1.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.9182499749585986,
+      "server_ms": 2.3,
+      "timings_ms": {
+        "total": 2.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about being afraid or anxious?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 259.8358750110492,
+      "server_ms": 257.0,
+      "timings_ms": {
+        "embed": 209.5,
+        "retrieve": 44.6,
+        "moderation": 162.6,
+        "semantic_lookup": 39.7,
+        "total": 257.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.9294,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about the Sabbath?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2115.756249986589,
+      "server_ms": 2098.8,
+      "timings_ms": {
+        "embed": 239.5,
+        "retrieve": 48.2,
+        "moderation": 161.8,
+        "semantic_lookup": 39.7,
+        "generate": 1806.3,
+        "total": 2098.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.811749931424856,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How should I pray?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.1409580260515213,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.769417013041675,
+      "server_ms": 1.3,
+      "timings_ms": {
+        "total": 1.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does scripture say about love?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2242.5623330054805,
+      "server_ms": 2232.8,
+      "timings_ms": {
+        "embed": 222.6,
+        "retrieve": 59.7,
+        "moderation": 195.7,
+        "semantic_lookup": 55.4,
+        "generate": 1943.2,
+        "total": 2232.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 9.685084107331932,
+      "server_ms": 3.2,
+      "timings_ms": {
+        "total": 3.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.667791003361344,
+      "server_ms": 2.4,
+      "timings_ms": {
+        "total": 2.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.146374994888902,
+      "server_ms": 1.4,
+      "timings_ms": {
+        "total": 1.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did God say \"I am that I am\"?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.281458074226975,
+      "server_ms": 4.3,
+      "timings_ms": {
+        "total": 4.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.9012500308454037,
+      "server_ms": 0.8,
+      "timings_ms": {
+        "total": 0.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the Ten Commandments?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.5853750305250287,
+      "server_ms": 1.8,
+      "timings_ms": {
+        "total": 1.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "圣经关于爱是怎么说的？",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 3469.622040982358,
+      "server_ms": 3459.6,
+      "timings_ms": {
+        "embed": 231.7,
+        "retrieve": 38.4,
+        "moderation": 113.4,
+        "semantic_lookup": 37.6,
+        "generate": 3179.7,
+        "total": 3459.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.445874994620681,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.314916023053229,
+      "server_ms": 3.2,
+      "timings_ms": {
+        "total": 3.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why was Jesus crucified?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1686.9693329790607,
+      "server_ms": 1675.6,
+      "timings_ms": {
+        "embed": 204.8,
+        "retrieve": 46.9,
+        "moderation": 182.5,
+        "semantic_lookup": 40.6,
+        "generate": 1418.8,
+        "total": 1675.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is faith?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.250499911606312,
+      "server_ms": 4.2,
+      "timings_ms": {
+        "total": 4.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.4002919672057033,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.637334051541984,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 1.9145420519635081,
+      "server_ms": 0.9,
+      "timings_ms": {
+        "total": 0.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about marriage?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 1.9042090279981494,
+      "server_ms": 0.9,
+      "timings_ms": {
+        "total": 0.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was David?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1561.4192500943318,
+      "server_ms": 1551.3,
+      "timings_ms": {
+        "embed": 230.9,
+        "retrieve": 47.2,
+        "moderation": 184.5,
+        "semantic_lookup": 38.7,
+        "generate": 1269.2,
+        "total": 1551.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.584332975558937,
+      "server_ms": 2.1,
+      "timings_ms": {
+        "total": 2.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.143082933500409,
+      "server_ms": 2.5,
+      "timings_ms": {
+        "total": 2.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 9.089834056794643,
+      "server_ms": 6.3,
+      "timings_ms": {
+        "total": 6.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why was Jesus crucified?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1859.749041032046,
+      "server_ms": 1847.8,
+      "timings_ms": {
+        "embed": 1.0,
+        "retrieve": 38.7,
+        "moderation": 270.4,
+        "semantic_lookup": 35.9,
+        "generate": 1572.5,
+        "total": 1847.8
+      },
+      "embedding_cached": true,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about fear and anxiety?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.7055840734392405,
+      "server_ms": 2.4,
+      "timings_ms": {
+        "total": 2.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say happens when we die?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.7911249827593565,
+      "server_ms": 5.5,
+      "timings_ms": {
+        "total": 5.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Abraham?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.9635839639231563,
+      "server_ms": 1.8,
+      "timings_ms": {
+        "total": 1.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.6315839970484376,
+      "server_ms": 1.8,
+      "timings_ms": {
+        "total": 1.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the fruit of the Spirit?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.735208068974316,
+      "server_ms": 1.9,
+      "timings_ms": {
+        "total": 1.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about money and wealth?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.616792012006044,
+      "server_ms": 3.3,
+      "timings_ms": {
+        "total": 3.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about fear and anxiety?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.1558750197291374,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.333999917842448,
+      "server_ms": 3.3,
+      "timings_ms": {
+        "total": 3.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How should I pray?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.740082986652851,
+      "server_ms": 4.5,
+      "timings_ms": {
+        "total": 4.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.8567499248310924,
+      "server_ms": 0.9,
+      "timings_ms": {
+        "total": 0.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.1092920107766986,
+      "server_ms": 1.2,
+      "timings_ms": {
+        "total": 1.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.076832974329591,
+      "server_ms": 1.3,
+      "timings_ms": {
+        "total": 1.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does \"I am that I am\" mean?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2656.791332992725,
+      "server_ms": 2646.9,
+      "timings_ms": {
+        "embed": 234.5,
+        "retrieve": 39.7,
+        "moderation": 155.3,
+        "semantic_lookup": 34.8,
+        "generate": 2363.8,
+        "total": 2646.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 3
+    },
+    {
+      "question": "What does the Bible say about the Sabbath?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.303084082901478,
+      "server_ms": 1.8,
+      "timings_ms": {
+        "total": 1.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 9.8998750327155,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is faith?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.223124986514449,
+      "server_ms": 2.3,
+      "timings_ms": {
+        "total": 2.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.512541953474283,
+      "server_ms": 5.0,
+      "timings_ms": {
+        "total": 5.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does scripture say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.611792042851448,
+      "server_ms": 1.9,
+      "timings_ms": {
+        "total": 1.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about hope?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 4534.324917010963,
+      "server_ms": 4523.8,
+      "timings_ms": {
+        "embed": 191.8,
+        "retrieve": 46.7,
+        "moderation": 191.1,
+        "semantic_lookup": 40.8,
+        "generate": 4279.0,
+        "total": 4523.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 8.037833962589502,
+      "server_ms": 2.5,
+      "timings_ms": {
+        "total": 2.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How should I pray?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.911000025458634,
+      "server_ms": 1.9,
+      "timings_ms": {
+        "total": 1.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the Ten Commandments?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.179874995723367,
+      "server_ms": 3.3,
+      "timings_ms": {
+        "total": 3.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.9663329953327775,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the greatest commandment?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2035.945084062405,
+      "server_ms": 2019.3,
+      "timings_ms": {
+        "embed": 184.5,
+        "retrieve": 76.4,
+        "moderation": 213.5,
+        "semantic_lookup": 34.8,
+        "generate": 1750.8,
+        "total": 2019.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about fear and anxiety?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 8.643291890621185,
+      "server_ms": 2.7,
+      "timings_ms": {
+        "total": 2.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about the poor?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.650874994695187,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about fear and anxiety?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.748833016492426,
+      "server_ms": 2.3,
+      "timings_ms": {
+        "total": 2.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.642333977855742,
+      "server_ms": 4.9,
+      "timings_ms": {
+        "total": 4.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.5322499461472034,
+      "server_ms": 1.2,
+      "timings_ms": {
+        "total": 1.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.138500080443919,
+      "server_ms": 2.0,
+      "timings_ms": {
+        "total": 2.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible teach about forgiving others?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 276.83420898392797,
+      "server_ms": 273.7,
+      "timings_ms": {
+        "embed": 218.2,
+        "retrieve": 47.6,
+        "moderation": 118.1,
+        "semantic_lookup": 40.7,
+        "total": 273.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.8593,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about the Sabbath?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.100292037241161,
+      "server_ms": 1.9,
+      "timings_ms": {
+        "total": 1.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about anger?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.281082936562598,
+      "server_ms": 2.7,
+      "timings_ms": {
+        "total": 2.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.523582989349961,
+      "server_ms": 2.3,
+      "timings_ms": {
+        "total": 2.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.8178340764716268,
+      "server_ms": 1.7,
+      "timings_ms": {
+        "total": 1.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about the Sabbath?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.062541993334889,
+      "server_ms": 2.0,
+      "timings_ms": {
+        "total": 2.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about being afraid or anxious?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 197.51945801544935,
+      "server_ms": 193.6,
+      "timings_ms": {
+        "embed": 1.3,
+        "retrieve": 38.7,
+        "moderation": 189.7,
+        "semantic_lookup": 75.3,
+        "total": 193.6
+      },
+      "embedding_cached": true,
+      "semantic_similarity": 0.9294,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 11.459582950919867,
+      "server_ms": 6.0,
+      "timings_ms": {
+        "total": 6.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is faith?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.879707936197519,
+      "server_ms": 1.7,
+      "timings_ms": {
+        "total": 1.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.270791007205844,
+      "server_ms": 2.5,
+      "timings_ms": {
+        "total": 2.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the greatest commandment?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1561.4922920940444,
+      "server_ms": 1542.5,
+      "timings_ms": {
+        "embed": 1.3,
+        "retrieve": 43.8,
+        "moderation": 127.5,
+        "semantic_lookup": 40.2,
+        "generate": 1409.9,
+        "total": 1542.5
+      },
+      "embedding_cached": true,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the greatest commandment?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 6982.114874990657,
+      "server_ms": 6972.3,
+      "timings_ms": {
+        "embed": 0.9,
+        "retrieve": 58.7,
+        "moderation": 280.3,
+        "semantic_lookup": 36.2,
+        "generate": 6683.8,
+        "total": 6972.3
+      },
+      "embedding_cached": true,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.635207984596491,
+      "server_ms": 2.4,
+      "timings_ms": {
+        "total": 2.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is faith?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.142042016610503,
+      "server_ms": 1.9,
+      "timings_ms": {
+        "total": 1.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did God say \"I am that I am\"?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.6198339657858014,
+      "server_ms": 1.8,
+      "timings_ms": {
+        "total": 1.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.378832945600152,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about hope?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 3349.815292051062,
+      "server_ms": 3340.9,
+      "timings_ms": {
+        "embed": 1.0,
+        "retrieve": 43.2,
+        "moderation": 206.5,
+        "semantic_lookup": 34.6,
+        "generate": 3122.9,
+        "total": 3340.9
+      },
+      "embedding_cached": true,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 9.901332901790738,
+      "server_ms": 5.6,
+      "timings_ms": {
+        "total": 5.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.539791960269213,
+      "server_ms": 1.7,
+      "timings_ms": {
+        "total": 1.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about fear and anxiety?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.6985829938203096,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about patience?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.13112498447299,
+      "server_ms": 2.8,
+      "timings_ms": {
+        "total": 2.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.862957935780287,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.178709070198238,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible teach about patience?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 244.25054097082466,
+      "server_ms": 241.0,
+      "timings_ms": {
+        "embed": 166.2,
+        "retrieve": 45.1,
+        "moderation": 235.9,
+        "semantic_lookup": 43.4,
+        "total": 241.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.9659,
+      "verses": 5
+    },
+    {
+      "question": "How should I pray?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.342916934750974,
+      "server_ms": 2.0,
+      "timings_ms": {
+        "total": 2.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.595791106112301,
+      "server_ms": 1.9,
+      "timings_ms": {
+        "total": 1.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about fear and anxiety?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.6873330399394035,
+      "server_ms": 5.2,
+      "timings_ms": {
+        "total": 5.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.635333967395127,
+      "server_ms": 1.4,
+      "timings_ms": {
+        "total": 1.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.366083954460919,
+      "server_ms": 1.3,
+      "timings_ms": {
+        "total": 1.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.2272919779643416,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the Ten Commandments?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.61187490914017,
+      "server_ms": 4.2,
+      "timings_ms": {
+        "total": 4.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.277875017374754,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.0986659694463015,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.4634999465197325,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about marriage?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.028416915796697,
+      "server_ms": 4.1,
+      "timings_ms": {
+        "total": 4.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.4187500132247806,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "耶稣是谁？",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1503.639915958047,
+      "server_ms": 1494.5,
+      "timings_ms": {
+        "embed": 217.3,
+        "retrieve": 48.1,
+        "moderation": 159.9,
+        "semantic_lookup": 40.1,
+        "generate": 1225.2,
+        "total": 1494.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Abraham?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 9.579499950632453,
+      "server_ms": 3.2,
+      "timings_ms": {
+        "total": 3.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 18.7673750333488,
+      "server_ms": 15.0,
+      "timings_ms": {
+        "total": 15.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 8.490124950185418,
+      "server_ms": 2.9,
+      "timings_ms": {
+        "total": 2.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What happens after death according to the Bible?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.393458064645529,
+      "server_ms": 1.4,
+      "timings_ms": {
+        "total": 1.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.213042044080794,
+      "server_ms": 0.9,
+      "timings_ms": {
+        "total": 0.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.2907919958233833,
+      "server_ms": 0.9,
+      "timings_ms": {
+        "total": 0.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How did God create the world?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1268.7558749457821,
+      "server_ms": 1252.1,
+      "timings_ms": {
+        "embed": 227.4,
+        "retrieve": 46.0,
+        "moderation": 224.8,
+        "semantic_lookup": 42.4,
+        "generate": 970.4,
+        "total": 1252.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did God say \"I am that I am\"?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.241917028091848,
+      "server_ms": 3.0,
+      "timings_ms": {
+        "total": 3.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is faith?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.184416029602289,
+      "server_ms": 1.9,
+      "timings_ms": {
+        "total": 1.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was David?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.420666907913983,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the armor of God?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.8184589724987745,
+      "server_ms": 3.5,
+      "timings_ms": {
+        "total": 3.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 8.264916948974133,
+      "server_ms": 5.1,
+      "timings_ms": {
+        "total": 5.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.9943339759483933,
+      "server_ms": 1.3,
+      "timings_ms": {
+        "total": 1.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.5327090406790376,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.255000083707273,
+      "server_ms": 3.7,
+      "timings_ms": {
+        "total": 3.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.2065410632640123,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the fruit of the Spirit?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.6260409504175186,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What happens after death according to the Bible?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.4244170635938644,
+      "server_ms": 0.9,
+      "timings_ms": {
+        "total": 0.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Moses in the Bible?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 277.8084579622373,
+      "server_ms": 274.9,
+      "timings_ms": {
+        "embed": 195.9,
+        "retrieve": 47.0,
+        "moderation": 268.7,
+        "semantic_lookup": 43.0,
+        "total": 274.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.8792,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.640750052407384,
+      "server_ms": 1.7,
+      "timings_ms": {
+        "total": 1.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.868750020861626,
+      "server_ms": 1.9,
+      "timings_ms": {
+        "total": 1.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.351707990281284,
+      "server_ms": 1.4,
+      "timings_ms": {
+        "total": 1.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Abraham?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.063915926963091,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.352375002577901,
+      "server_ms": 1.4,
+      "timings_ms": {
+        "total": 1.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.05958404392004,
+      "server_ms": 3.5,
+      "timings_ms": {
+        "total": 3.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.4015000564977527,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.6241250345483422,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.8477909984067082,
+      "server_ms": 1.8,
+      "timings_ms": {
+        "total": 1.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.1864169761538506,
+      "server_ms": 2.1,
+      "timings_ms": {
+        "total": 2.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Jesus Christ?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 4052.234165952541,
+      "server_ms": 4038.8,
+      "timings_ms": {
+        "embed": 241.0,
+        "retrieve": 49.9,
+        "moderation": 203.9,
+        "semantic_lookup": 40.1,
+        "generate": 3740.7,
+        "total": 4038.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 9.8758329404518,
+      "server_ms": 6.0,
+      "timings_ms": {
+        "total": 6.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Abraham?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 9.53083299100399,
+      "server_ms": 5.8,
+      "timings_ms": {
+        "total": 5.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did God say \"I am that I am\"?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.5647090300917625,
+      "server_ms": 1.7,
+      "timings_ms": {
+        "total": 1.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.9799590595066547,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why was Jesus crucified?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.6784580443054438,
+      "server_ms": 1.4,
+      "timings_ms": {
+        "total": 1.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about anger?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.8265830371528864,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How do I pray?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 294.1717089852318,
+      "server_ms": 288.5,
+      "timings_ms": {
+        "embed": 235.5,
+        "retrieve": 48.8,
+        "moderation": 214.1,
+        "semantic_lookup": 41.7,
+        "total": 288.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.9044,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible teach about forgiving others?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 296.57716606743634,
+      "server_ms": 293.2,
+      "timings_ms": {
+        "embed": 3.0,
+        "retrieve": 38.5,
+        "moderation": 287.9,
+        "semantic_lookup": 34.7,
+        "total": 293.2
+      },
+      "embedding_cached": true,
+      "semantic_similarity": 0.8592,
+      "verses": 5
+    },
+    {
+      "question": "What is the Lord's Prayer?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.146332995034754,
+      "server_ms": 1.4,
+      "timings_ms": {
+        "total": 1.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 8.25658394023776,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is faith?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.590458003804088,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.724917002022266,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.3747920533642173,
+      "server_ms": 0.9,
+      "timings_ms": {
+        "total": 0.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.788541023619473,
+      "server_ms": 0.7,
+      "timings_ms": {
+        "total": 0.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.299791042692959,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Moses in the Bible?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 139.03474994003773,
+      "server_ms": 135.7,
+      "timings_ms": {
+        "embed": 0.7,
+        "retrieve": 37.0,
+        "moderation": 132.7,
+        "semantic_lookup": 40.5,
+        "total": 135.7
+      },
+      "embedding_cached": true,
+      "semantic_similarity": 0.8792,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.190292092971504,
+      "server_ms": 1.7,
+      "timings_ms": {
+        "total": 1.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was David?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.3909580195322633,
+      "server_ms": 0.7,
+      "timings_ms": {
+        "total": 0.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.247125026769936,
+      "server_ms": 0.7,
+      "timings_ms": {
+        "total": 0.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 1.8169579561799765,
+      "server_ms": 0.7,
+      "timings_ms": {
+        "total": 0.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the 10 commandments?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 159.8521249834448,
+      "server_ms": 158.5,
+      "timings_ms": {
+        "embed": 0.8,
+        "retrieve": 44.8,
+        "moderation": 153.8,
+        "semantic_lookup": 36.2,
+        "total": 158.5
+      },
+      "embedding_cached": true,
+      "semantic_similarity": 0.9455,
+      "verses": 5
+    },
+    {
+      "question": "Why was Jesus crucified?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 8.653167053125799,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did God say \"I am that I am\"?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.216415971517563,
+      "server_ms": 1.4,
+      "timings_ms": {
+        "total": 1.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the fruit of the Spirit?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.391125080175698,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.355666995048523,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.4281250555068254,
+      "server_ms": 1.2,
+      "timings_ms": {
+        "total": 1.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How do I pray?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 160.7940000249073,
+      "server_ms": 158.0,
+      "timings_ms": {
+        "embed": 2.0,
+        "retrieve": 32.9,
+        "moderation": 155.9,
+        "semantic_lookup": 30.5,
+        "total": 158.0
+      },
+      "embedding_cached": true,
+      "semantic_similarity": 0.9044,
+      "verses": 5
+    },
+    {
+      "question": "Why did God say \"I am that I am\"?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.117833006195724,
+      "server_ms": 0.8,
+      "timings_ms": {
+        "total": 0.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about fear and anxiety?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 1.7947090091183782,
+      "server_ms": 0.8,
+      "timings_ms": {
+        "total": 0.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did Jesus die on the cross?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1792.1610830817372,
+      "server_ms": 1785.5,
+      "timings_ms": {
+        "embed": 425.1,
+        "retrieve": 59.2,
+        "moderation": 111.9,
+        "semantic_lookup": 42.0,
+        "generate": 1296.6,
+        "total": 1785.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.302500027231872,
+      "server_ms": 1.9,
+      "timings_ms": {
+        "total": 1.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the Ten Commandments?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 8.127625100314617,
+      "server_ms": 3.9,
+      "timings_ms": {
+        "total": 3.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is faith?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.978167009539902,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the Lord's Prayer?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.405833013355732,
+      "server_ms": 2.0,
+      "timings_ms": {
+        "total": 2.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.645792094990611,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible teach about marriage?",
+      "status": 200,
+      "cache": "HIT-SEMANTIC",
+      "client_ms": 302.3053340148181,
+      "server_ms": 299.0,
+      "timings_ms": {
+        "embed": 230.9,
+        "retrieve": 65.4,
+        "moderation": 110.8,
+        "semantic_lookup": 37.2,
+        "total": 299.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": 0.9313,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 8.172250003553927,
+      "server_ms": 3.6,
+      "timings_ms": {
+        "total": 3.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.7932089287787676,
+      "server_ms": 1.3,
+      "timings_ms": {
+        "total": 1.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the Ten Commandments?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.254541963338852,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What happens after death according to the Bible?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.6164170121774077,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.355417003855109,
+      "server_ms": 1.3,
+      "timings_ms": {
+        "total": 1.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.415291965007782,
+      "server_ms": 1.4,
+      "timings_ms": {
+        "total": 1.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is grace?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.567541996948421,
+      "server_ms": 3.5,
+      "timings_ms": {
+        "total": 3.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.1469159983098507,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the Ten Commandments?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.220166032202542,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about marriage?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.9611660866066813,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.056249978020787,
+      "server_ms": 1.6,
+      "timings_ms": {
+        "total": 1.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the Ten Commandments?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.180375020951033,
+      "server_ms": 2.3,
+      "timings_ms": {
+        "total": 2.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about fear and anxiety?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.4311670567840338,
+      "server_ms": 1.3,
+      "timings_ms": {
+        "total": 1.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How did God create the world?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.1410000044852495,
+      "server_ms": 1.2,
+      "timings_ms": {
+        "total": 1.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 1.9838330335915089,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the fruit of the Spirit?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.275374950841069,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.7286249678581953,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.720374941825867,
+      "server_ms": 2.2,
+      "timings_ms": {
+        "total": 2.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What happens after death according to the Bible?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.56200004555285,
+      "server_ms": 2.8,
+      "timings_ms": {
+        "total": 2.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.5214169872924685,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 1.9069159170612693,
+      "server_ms": 0.9,
+      "timings_ms": {
+        "total": 0.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did Jesus die on the cross?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 1871.5936669614166,
+      "server_ms": 1864.0,
+      "timings_ms": {
+        "embed": 0.8,
+        "retrieve": 40.4,
+        "moderation": 107.4,
+        "semantic_lookup": 35.5,
+        "generate": 1750.9,
+        "total": 1864.0
+      },
+      "embedding_cached": true,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.7611250299960375,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.6077089132741094,
+      "server_ms": 0.7,
+      "timings_ms": {
+        "total": 0.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why was Jesus crucified?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.634083037264645,
+      "server_ms": 0.7,
+      "timings_ms": {
+        "total": 0.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why was Jesus crucified?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.2198330154642463,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 5.655582994222641,
+      "server_ms": 3.1,
+      "timings_ms": {
+        "total": 3.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.201708081178367,
+      "server_ms": 1.2,
+      "timings_ms": {
+        "total": 1.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.592290984466672,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How did God create the world?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.000958007760346,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about strength in hard times?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 2913.3864579489455,
+      "server_ms": 2906.3,
+      "timings_ms": {
+        "embed": 175.7,
+        "retrieve": 53.4,
+        "moderation": 203.9,
+        "semantic_lookup": 42.4,
+        "generate": 2672.6,
+        "total": 2906.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about the Sabbath?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.3853749781847,
+      "server_ms": 3.9,
+      "timings_ms": {
+        "total": 3.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about forgiveness?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.055333069525659,
+      "server_ms": 2.3,
+      "timings_ms": {
+        "total": 2.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.213333039544523,
+      "server_ms": 3.6,
+      "timings_ms": {
+        "total": 3.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about anger?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.3048748997971416,
+      "server_ms": 2.8,
+      "timings_ms": {
+        "total": 2.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who was Moses?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.660999984480441,
+      "server_ms": 1.7,
+      "timings_ms": {
+        "total": 1.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about marriage?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 8.222750038839877,
+      "server_ms": 5.5,
+      "timings_ms": {
+        "total": 5.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the fruits of the Spirit?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.0409170323982835,
+      "server_ms": 1.5,
+      "timings_ms": {
+        "total": 1.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How should I pray?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.5730840172618628,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 10.055292048491538,
+      "server_ms": 7.7,
+      "timings_ms": {
+        "total": 7.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the armor of God?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.451625001616776,
+      "server_ms": 1.2,
+      "timings_ms": {
+        "total": 1.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 4.8902080161497,
+      "server_ms": 2.7,
+      "timings_ms": {
+        "total": 2.7
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What happens after death according to the Bible?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.3930419748649,
+      "server_ms": 5.1,
+      "timings_ms": {
+        "total": 5.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is faith according to the Bible?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.4021660685539246,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.278000047430396,
+      "server_ms": 1.3,
+      "timings_ms": {
+        "total": 1.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.5227079167962074,
+      "server_ms": 0.9,
+      "timings_ms": {
+        "total": 0.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 7.519708015024662,
+      "server_ms": 5.4,
+      "timings_ms": {
+        "total": 5.4
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did God say \"I am that I am\"?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.0456669628620148,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.02958395332098,
+      "server_ms": 1.3,
+      "timings_ms": {
+        "total": 1.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What are the Ten Commandments?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.276750048622489,
+      "server_ms": 0.8,
+      "timings_ms": {
+        "total": 0.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the fruit of the Spirit?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.318375002592802,
+      "server_ms": 4.5,
+      "timings_ms": {
+        "total": 4.5
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.8734159423038363,
+      "server_ms": 1.2,
+      "timings_ms": {
+        "total": 1.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about marriage?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.563500078395009,
+      "server_ms": 0.9,
+      "timings_ms": {
+        "total": 0.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.252875012345612,
+      "server_ms": 0.8,
+      "timings_ms": {
+        "total": 0.8
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is faith?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.2200419334694743,
+      "server_ms": 0.9,
+      "timings_ms": {
+        "total": 0.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "耶稣是谁？",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.89341698307544,
+      "server_ms": 5.3,
+      "timings_ms": {
+        "total": 5.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about children?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.3972908966243267,
+      "server_ms": 0.9,
+      "timings_ms": {
+        "total": 0.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.583916997537017,
+      "server_ms": 1.2,
+      "timings_ms": {
+        "total": 1.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.443583100102842,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.4102090392261744,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.6322500091046095,
+      "server_ms": 2.2,
+      "timings_ms": {
+        "total": 2.2
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What is the greatest commandment?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 3.8736669812351465,
+      "server_ms": 2.3,
+      "timings_ms": {
+        "total": 2.3
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How should I pray?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.215708023868501,
+      "server_ms": 0.9,
+      "timings_ms": {
+        "total": 0.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Who is Jesus?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.2942080395296216,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about patience?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.2755409590899944,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "Why did God say \"I am that I am\"?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.416458912193775,
+      "server_ms": 1.1,
+      "timings_ms": {
+        "total": 1.1
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "How was the world created?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 6.011625053361058,
+      "server_ms": 4.6,
+      "timings_ms": {
+        "total": 4.6
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.377666998654604,
+      "server_ms": 1.0,
+      "timings_ms": {
+        "total": 1.0
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about love?",
+      "status": 200,
+      "cache": "HIT-EXACT",
+      "client_ms": 2.1924999309703708,
+      "server_ms": 0.9,
+      "timings_ms": {
+        "total": 0.9
+      },
+      "embedding_cached": false,
+      "semantic_similarity": null,
+      "verses": 5
+    },
+    {
+      "question": "What does the Bible say about strength in hard times?",
+      "status": 200,
+      "cache": "MISS",
+      "client_ms": 3069.921957910992,
+      "server_ms": 3061.1,
+      "timings_ms": {
+        "embed": 0.8,
+        "retrieve": 39.2,
+        "moderation": 117.4,
+        "semantic_lookup": 35.8,
+        "generate": 2929.4,
+        "total": 3061.1
+      },
+      "embedding_cached": true,
+      "semantic_similarity": null,
+      "verses": 5
+    }
+  ]
+}

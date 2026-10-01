@@ -2,6 +2,8 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 
+from app.config import settings
+
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -9,7 +11,8 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 if not OPENAI_API_KEY:
     raise ValueError("OPENAI_API_KEY not set in .env")
 
-client = OpenAI(api_key=OPENAI_API_KEY)
+# Retries with backoff cover the occasional 429 when ingestion runs several batches at once.
+client = OpenAI(api_key=OPENAI_API_KEY, max_retries=5)
 
 
 def embed_texts(texts: list[str]) -> list[list[float]]:
@@ -17,7 +20,7 @@ def embed_texts(texts: list[str]) -> list[list[float]]:
     批量生成 embedding，返回二维 list，每个元素是一个向量
     """
     resp = client.embeddings.create(
-        model="text-embedding-3-small",
+        model=settings.embedding_model,
         input=texts,
     )
     return [item.embedding for item in resp.data]
@@ -36,7 +39,7 @@ def generate_answer(question: str, context: str) -> str:
     user_content = f"Question:\n{question}\n\nRelevant Bible verses:\n{context}"
 
     completion = client.chat.completions.create(
-        model="gpt-4o",
+        model=settings.chat_model,
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_content},
@@ -51,7 +54,7 @@ def is_safe_content(text: str) -> bool:
     返回 True 表示安全，False 表示被 flag
     """
     resp = client.moderations.create(
-        model="omni-moderation-latest",
+        model=settings.moderation_model,
         input=text,
     )
     result = resp.results[0]

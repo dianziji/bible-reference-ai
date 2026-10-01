@@ -13,6 +13,11 @@ NO_VERSES_FOUND = (
     "目前没有找到相关的经文，请尝试换一种提问方式。"
 )
 
+RATE_LIMITED = (
+    "Too many requests. Please wait a moment and try again. / "
+    "请求太频繁，请稍等片刻再试。"
+)
+
 INSUFFICIENT_CONTEXT = (
     "I couldn't find enough relevant verses to answer this reliably. "
     "Try rephrasing the question, or read the related chapters directly. / "

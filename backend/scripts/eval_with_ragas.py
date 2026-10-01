@@ -32,20 +32,23 @@ LOG_PATH = (
 )
 
 
-def load_logs(max_samples: int | None = None):
+def load_logs(max_samples: int | None = None, log_path: Path = LOG_PATH):
     """从日志文件中读取若干条记录，用于评估。"""
-    if not LOG_PATH.exists():
-        print(f"⚠️  Log file not found: {LOG_PATH}")
+    if not log_path.exists():
+        print(f"⚠️  Log file not found: {log_path}")
         print("   请先通过前端或 curl 调用 /api/query 生成一些日志，再运行评估脚本。")
         return []
 
     records = []
-    with LOG_PATH.open("r", encoding="utf-8") as f:
+    with log_path.open("r", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if not line:
                 continue
             rec = json.loads(line)
+            # 缓存命中的记录不是新的生成结果，评估时跳过，避免同一答案重复计分
+            if rec.get("cache") in ("exact", "semantic"):
+                continue
             records.append(rec)
 
     if max_samples is not None:
@@ -92,14 +95,24 @@ def build_ragas_dataset(records):
 
 
 def main():
+    import argparse
+
+    ap = argparse.ArgumentParser(description="Score logged answers with Ragas faithfulness / answer relevancy.")
+    ap.add_argument("--log", type=Path, default=LOG_PATH,
+                    help="JSONL of {question, answer, verses} records (default: app/logs/query_log.jsonl; "
+                         "scripts/compare_models.py writes one per model)")
+    ap.add_argument("--out", type=Path, default=None, help="CSV path (default: eval_results/ragas_eval_results.csv)")
+    ap.add_argument("--max", type=int, default=50)
+    args = ap.parse_args()
+
     # 检查 OPENAI_API_KEY 是否设置
     if not os.getenv("OPENAI_API_KEY"):
         print("❌ OPENAI_API_KEY not found in environment variables.")
         print("   请确保 .env 文件中包含 OPENAI_API_KEY，或设置环境变量。")
         return
-    
-    print("📥 Loading query logs...")
-    records = load_logs(max_samples=50)
+
+    print(f"📥 Loading query logs from {args.log} ...")
+    records = load_logs(max_samples=args.max, log_path=args.log)
     if not records:
         print("❌ No records found. 请先多问几个问题生成日志，再来跑评估。")
         return
@@ -125,11 +138,11 @@ def main():
     print("\n🎯 Evaluation Summary:")
     print(result)
 
-    out_dir = Path(__file__).resolve().parent.parent / "eval_results"
-    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = args.out or (Path(__file__).resolve().parent.parent / "eval_results" / "ragas_eval_results.csv")
+    out_path.parent.mkdir(parents=True, exist_ok=True)
     result_df = result.to_pandas()
-    result_df.to_csv(out_dir / "ragas_eval_results.csv", index=False)
-    print(f"\n📄 Detailed results saved to: {out_dir / 'ragas_eval_results.csv'}")
+    result_df.to_csv(out_path, index=False)
+    print(f"\n📄 Detailed results saved to: {out_path}")
 
 
 if __name__ == "__main__":

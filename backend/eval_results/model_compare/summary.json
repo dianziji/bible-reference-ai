@@ -1,0 +1,31 @@
+{
+  "ran_at": "2026-10-01T02:13:29.338582+00:00",
+  "questions": 32,
+  "embedding_model": "text-embedding-3-small",
+  "models": [
+    {
+      "model": "gpt-4o-mini",
+      "reasoning_effort": null,
+      "answered": 32,
+      "errors": 0,
+      "latency_p50_ms": 1485.5,
+      "latency_p95_ms": 2449.5,
+      "latency_mean_ms": 1711.0,
+      "output_tokens_mean": 119.4,
+      "cost_per_1k_queries_usd": 0.1182,
+      "not_sure_rate": 0.031
+    },
+    {
+      "model": "gpt-5-nano",
+      "reasoning_effort": "minimal",
+      "answered": 32,
+      "errors": 0,
+      "latency_p50_ms": 1841.6,
+      "latency_p95_ms": 2774.2,
+      "latency_mean_ms": 1990.8,
+      "output_tokens_mean": 152.4,
+      "cost_per_1k_queries_usd": 0.0764,
+      "not_sure_rate": 0.0
+    }
+  ]
+}

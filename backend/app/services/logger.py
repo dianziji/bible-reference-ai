@@ -3,7 +3,7 @@
 import json
 from pathlib import Path
 from datetime import datetime
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 
 LOG_DIR = Path(__file__).resolve().parent.parent / "logs"
 LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -15,6 +15,7 @@ def log_query(
     question: str,
     answer: str,
     verses: List[Dict[str, Any]],
+    cache: Optional[str] = None,
 ) -> None:
     """Append one query-answer record to a JSONL log file."""
     record = {
@@ -22,6 +23,7 @@ def log_query(
         "question": question,
         "answer": answer,
         "verses": verses,  # list of {book, chapter, verse, text, ...}
+        "cache": cache,  # "exact" | "semantic" | "miss" — served from cache or freshly generated
     }
     with LOG_PATH.open("a", encoding="utf-8") as f:
         f.write(json.dumps(record, ensure_ascii=False) + "\n")
