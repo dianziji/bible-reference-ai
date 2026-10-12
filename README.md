@@ -77,9 +77,53 @@ The retriever is scored against a hand-labelled golden set (`scripts/golden_set.
 uv run python -m scripts.eval_retrieval --k 5 10
 ```
 
-Each question carries two label sets: **canonical** (the famous verses a reader names from memory — strict) and **relevant** (canonical plus every on-topic verse found while reviewing the retriever's top-10 — what a reader would accept; built by looking at retriever output, so quote it with that caveat). Measured 2026-09-30 with `TOP_K=5`: hit@5 **56%** strict / **100%** curated, MRR 0.49 / 0.91. The gap is the retriever's real limitation: single-vector dense retrieval matches question-shaped verses to question-shaped queries ("Who do you say I am?" for *Who is Jesus?*) and short formulaic verses ("Grace and peace to you…" four times for *What is grace?*). Query rewriting or hybrid search is the obvious next step, and this eval is how it would be measured.
+Each question carries two label sets: **canonical** (the famous verses a reader names from memory — strict) and **relevant** (canonical plus every on-topic verse found while reviewing the retriever's top-10 — what a reader would accept; built by looking at retriever output, so quote it with that caveat). Measured 2026-09-30 with `TOP_K=5`: hit@5 **56%** strict / **100%** curated, MRR 0.49 / 0.91. The gap is the retriever's real limitation: single-vector dense retrieval matches question-shaped verses to question-shaped queries ("Who do you say I am?" for *Who is Jesus?*) and short formulaic verses ("Grace and peace to you…" four times for *What is grace?*). Query rewriting and hybrid search are the obvious next step, and this eval is how they were measured — next section.
 
 The same run calibrated the relevance gate: off-topic English questions score at most 0.38 against the index, on-topic ones 0.47 and up, and Chinese scores run about 0.05 higher, so `SCORE_THRESHOLD=0.40` / `SCORE_THRESHOLD_ZH=0.45` replaced the original 0.5 — which had been rejecting the best verses for "What does the Bible say about love?".
+
+### Query rewriting and hybrid retrieval
+
+`scripts/eval_retrieval_variants.py` runs the same golden set through the remedies for that gap and reports, per arm, retrieval quality, the latency the arm adds to a cold request and what it costs. Two things vary: what is searched for, and what searches.
+
+| query side | | retriever | |
+|---|---|---|---|
+| **q** | the question as asked | **dense** | `text-embedding-3-small` → Pinecone (production) |
+| **strip** | rule-based: the question template removed ("What does the Bible say about love?" → "love") | **bm25** | Okapi BM25 over the vendored text, in-process (`app/services/lexical.py`: Snowball stems for English, character bigrams for Chinese; builds in ~6 s, answers in ~5 ms) |
+| **hyde** | gpt-5-nano writes 2–3 sentences "in the voice of Scripture" that would answer the question; that passage is the query ([HyDE](https://arxiv.org/abs/2212.10496)) | **hybrid** | dense ⊕ bm25, reciprocal rank fusion (k = 60) over the top-20 of each |
+| **q+hyde** | q and the HyDE passage searched separately, lists fused — q anchors the result when the passage wanders | | |
+| **multi** | gpt-5-nano writes 3 alternative queries; each is searched and fused with q | | |
+
+Measured 2026-10-12 on the 32 questions (canonical = strict, relevant = curated; p50 latency of the whole retrieval path, embedding and Pinecone included; cost is the rewrite call only, at gpt-5-nano prices):
+
+| arm | canonical hit@5 | hit@10 | MRR | relevant hit@5 | MRR | retrieval p50 | $ / 1k queries |
+|---|---|---|---|---|---|---|---|
+| dense (production) | 56% | 78% | 0.49 | 100% | 0.91 | 0.25 s | — |
+| bm25 | 31% | 41% | 0.17 | 50% | 0.31 | 0.005 s | — |
+| hybrid | 50% | 59% | 0.40 | 88% | 0.71 | 0.26 s | — |
+| strip + dense | 47% | 62% | 0.41 | 75% | 0.60 | 0.25 s | — |
+| multi + dense | 62% | 75% | 0.48 | 100% | 0.95 | 1.14 s | $0.020 |
+| hyde + dense | 75% | 88% | 0.71 | 88% | 0.86 | 1.15 s | $0.035 |
+| hyde + bm25 | 84% | 88% | 0.64 | 88% | 0.68 | 0.91 s | $0.035 |
+| **hyde + hybrid** | **84%** | **88%** | **0.78** | 94% | 0.85 | 1.16 s | $0.035 |
+| q+hyde + hybrid | 81% | 88% | 0.69 | **100%** | 0.86 | 1.25 s | $0.035 |
+
+What the numbers say:
+
+- **Hybrid search on its own does not help here, and BM25 alone is poor.** The canonical verses rarely share vocabulary with the question: the Ten Commandments never say "ten commandments", *Who is Jesus?* is answered by "The Word became flesh". What lexical overlap there is comes from the question template ("say" alone matches 1,747 verses), so fusing BM25 with dense lands at 50–53% for BM25 weights 0.25–1 (RRF k 10 or 60), under dense alone, and at 41% when BM25 is weighted 2×. Stemming on or off moves BM25 by one question.
+- **Stripping the template does not help either** (47%): "love" or "the poor" alone is a weaker query than the question, so the problem is not the question words, it is that the question lacks the answer's words.
+- **Rewriting the question into a passage is what works.** HyDE lifts strict hit@5 from 56% to 75–84% and MRR from 0.49 to 0.78: it supplies the answer's vocabulary, which is exactly what both retrievers need. Eleven of the fourteen dense misses are fixed — *What is grace?* goes from no hit to Ephesians 2:8 at rank 1, *Who is Jesus?* to John 1:14, *Did Jesus rise from the dead?* to Matthew 28:6 — and the lexical side now earns its keep: once the query reads like Scripture, BM25 finds the verbatim verse (84% on its own), and the fusion keeps dense's ranking (MRR 0.78 vs 0.64).
+- **Multi-query rewriting is not worth the call.** gpt-5-nano's three "alternative queries" stay question-shaped ("What does the Bible say about grace"), so they retrieve what the question retrieves: +6% for the same latency as HyDE.
+- **The cost is one LLM call before retrieval**: 0.9 s at p50 (0.7–1.3 s; ~80 output tokens, reasoning effort minimal) and $0.035 per 1k queries against $0.076 for generation. It would add about a second to a cold request (2.9 s → ~4 s), since the passage has to exist before it can be embedded; exact and semantic cache hits are unaffected, and the passage can be cached beside the embedding.
+- **When the passage wanders, HyDE loses the question.** *Why did God say "I am that I am"?* drops from rank 1 to none because the generated passage drifts into "Before the mountains were born…"; *Who was Moses?* from 3 to none. Fusing the original question's dense list back in (q+hyde + hybrid) brings *I am that I am* back to rank 1 (Moses stays lost) and pushes two HyDE wins down (*grace* to rank 9, *David* to 6): 81% vs 84% is one question out of 32, within noise, and the anchored arm keeps the curated hit@5 at 100%, which makes it the safer production shape.
+
+Two caveats on the measurement itself. At 32 questions one question is 3 points, so differences under ~6 points are noise. And the "relevant" labels were curated from the *dense* retriever's top-10, so an arm that surfaces different on-topic verses is under-credited on that set: HyDE's "unlabelled" top-5 verses include Matthew 28:7 ("He has risen from the dead") for the resurrection, 1 Thessalonians 4:14–17 for life after death and John 20:31 ("耶稣是基督，是神的儿子") for *耶稣是谁？* — on-topic verses the labels never saw. `--show-unlabelled ARM` prints that review queue; the labels have deliberately not been extended from it in this run.
+
+```bash
+uv run python -m scripts.eval_retrieval_variants                       # default arms; LLM rewrites cached under eval_results/retrieval_variants/
+uv run python -m scripts.eval_retrieval_variants --arms dense hyde+hybrid q+hyde+hybrid --bm25-weight 0.5 --show-unlabelled q+hyde+hybrid
+```
+
+Results: `backend/eval_results/retrieval_variants.json` (per question, per arm: the queries used, the top-10 and the metrics). Not yet wired into the serving path: doing so means running the HyDE call alongside moderation, loading the BM25 index at startup, gating on the dense hit's cosine rather than on the fused score, and folding the rewrite prompt into the cache fingerprint.
 
 Answer quality is scored separately with reference-free Ragas metrics (next section), because the "right answer" to a scripture question is whatever the retrieved verses support, not a fixed string.
 
@@ -155,6 +199,7 @@ backend/
   app/config.py                  env-driven settings + the config fingerprint that namespaces the cache
   app/services/query_pipeline.py orchestration: caches, parallel moderation/retrieval, timings
   app/services/rag_service.py    RAGService: embed / retrieve (per-translation namespace, threshold on raw cosine) / generate
+  app/services/lexical.py        BM25 over the vendored verses (in-process, per language) + reciprocal rank fusion
   app/verses.py                  the two translations: parse ebible.org verse-per-line files, align by verse id
   app/books.py                   66 books: USFM code ↔ English name ↔ 和合本 name
   app/language.py                question language detection (en / zh)
@@ -165,12 +210,13 @@ backend/
   scripts/load_and_embed.py      embed both translations into their namespaces (--dry-run to preview)
   scripts/golden_set.jsonl       32 questions with the verses the retriever should surface (ground truth)
   scripts/eval_retrieval.py      hit@k / MRR / recall against the golden set, no LLM judge
+  scripts/eval_retrieval_variants.py  query rewriting (strip / HyDE / multi-query) × dense / BM25 / hybrid on the same labels
   scripts/eval_with_ragas.py     Ragas evaluation run (--log / --out to score any answer file)
   scripts/benchmark_cache.py     cold / warm / semantic / mixed-traffic latency and hit-rate benchmark
   scripts/compare_models.py      chat-model comparison on identical retrieved context
   tests/                         pytest suite (fakeredis + in-memory RAG fakes; no network)
   data/bsb/, data/cuv/           the two public-domain translations + provenance (see Data below)
-  eval_results/                  Ragas, benchmark and model-comparison output
+  eval_results/                  Ragas, benchmark, model-comparison and retrieval-variant output
   pyproject.toml, uv.lock        runtime deps + `dev` and `eval` groups, locked
   Dockerfile, .dockerignore
 frontend/

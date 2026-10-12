@@ -27,7 +27,8 @@ it is not an unbiased test — keep that in mind when quoting it.
 Cost: one embedding call per question (~$0.0001 total). Output goes to
 eval_results/retrieval_eval.json, and the questions that miss at k=5 are
 printed with what came back instead, which is what you look at to tune
-TOP_K / SCORE_THRESHOLD or to spot a wrong label.
+TOP_K / SCORE_THRESHOLD or to spot a wrong label. scripts/eval_retrieval_variants.py
+scores query rewriting and hybrid (dense + BM25) retrieval on the same labels.
 """
 
 import argparse

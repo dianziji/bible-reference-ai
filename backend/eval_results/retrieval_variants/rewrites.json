@@ -1,0 +1,390 @@
+{
+  "hyde|gpt-5-nano|v1": {
+    "What is the greatest commandment?": {
+      "text": "Love the Lord your God with all your heart, and with all your soul, and with all your mind. This is the great and first commandment. And the second is like unto it: you shall love your neighbor as yourself.",
+      "ms": 1001.8,
+      "tokens_in": 63,
+      "tokens_out": 56
+    },
+    "How was the world created?": {
+      "text": "In the beginning, God created the heavens and the earth, and the earth was without form and void. And God said, Let there be light; and there was light, and God saw that it was good. He formed the dry land and the waters, and called them into being by His word.",
+      "ms": 866.1,
+      "tokens_in": 62,
+      "tokens_out": 70
+    },
+    "What does the Bible say about love?": {
+      "text": "Love is patient and kind; it does not envy or boast, it is not proud or rude. It bears all things, believes all things, hopes all things, endures all things. And faith, hope, and love remain, but the greatest of these is love.",
+      "ms": 902.9,
+      "tokens_in": 64,
+      "tokens_out": 64
+    },
+    "What is the fruit of the Spirit?": {
+      "text": "But the fruit of the Spirit is love, joy, peace, long-suffering, kindness, goodness, faithfulness, gentleness, self-control. Against such things there is no law. If we live in the Spirit, let us also walk in the Spirit.",
+      "ms": 906.9,
+      "tokens_in": 64,
+      "tokens_out": 62
+    },
+    "What is the armor of God?": {
+      "text": "Therefore put on the whole armor of God, that you may withstand in the evil day, and having done all, to stand. Stand therefore, gird your waist with truth, and having put on the breastplate of righteousness; and your feet shod with the gospel of peace. Take up the shield of faith, the helmet of salvation, and the sword of the Spirit, which is the word of God.",
+      "ms": 1194.6,
+      "tokens_in": 63,
+      "tokens_out": 91
+    },
+    "What is the Lord's Prayer?": {
+      "text": "Our Father in heaven, hallowed be Your name; Your kingdom come; Your will be done on earth as it is in heaven. Give us this day our daily bread, and forgive us our debts, as we also have forgiven our debtors. And lead us not into temptation, but deliver us from the evil one.",
+      "ms": 812.8,
+      "tokens_in": 63,
+      "tokens_out": 74
+    },
+    "Why did God say \"I am that I am\"?": {
+      "text": "Thus saith the Lord: I am that I am, the I AM that liveth for ever; I am the God who was, and is, and shall be. In power I declare my name, and in truth I reveal my eternal nature unto all, that they may seek and live by my presence. Before the mountains were brought forth, I am, and with me is the compass of days, for I am the beginning and the end.",
+      "ms": 1001.1,
+      "tokens_in": 67,
+      "tokens_out": 100
+    },
+    "What are the Ten Commandments?": {
+      "text": "And God spoke all these words, saying:\nI am the Lord your God, who brought you out of the land of Egypt, out of the house of bondage. You shall have no other gods before Me; you shall not make for yourself a carved image, or any likeness of anything that is in heaven above, or on the earth beneath, or in the water under the earth. You shall not take the name of the Lord your God in vain, and remember the Sabbath day, to keep it holy. You shall honor your father and your mother, you shall not murder, you shall not commit adultery, you shall not steal, you shall not bear false witness, and you shall not covet.",
+      "ms": 1306.5,
+      "tokens_in": 63,
+      "tokens_out": 151
+    },
+    "What does the Bible say about fear and anxiety?": {
+      "text": "Do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with my righteous right hand. Be strong and courageous, for the Lord your God is with you wherever you go.",
+      "ms": 798.3,
+      "tokens_in": 66,
+      "tokens_out": 67
+    },
+    "What is faith?": {
+      "text": "Now faith is the assurance of things hoped for, the conviction of things not seen. For by it the elders obtained a good report. Through faith we understand that the worlds were framed by the word of God.",
+      "ms": 719.9,
+      "tokens_in": 60,
+      "tokens_out": 51
+    },
+    "Why did Jesus die on the cross?": {
+      "text": "For our sins He laid down His life, that we might live through Him. God commendeth His love toward us, in that while we were yet sinners, Christ died for us. He bore our iniquities and by His wounds we are healed.",
+      "ms": 746.6,
+      "tokens_in": 64,
+      "tokens_out": 60
+    },
+    "What does the Bible say about forgiveness?": {
+      "text": "As the Lord forgives you, so you also must forgive one another. For if you forgive others their trespasses, your heavenly Father will forgive you; but if you do not forgive men their trespasses, neither will your Father forgive your trespasses. Be kind to one another, tenderhearted, forgiving one another, even as God in Christ forgave you.",
+      "ms": 887.2,
+      "tokens_in": 64,
+      "tokens_out": 82
+    },
+    "What happens after death according to the Bible?": {
+      "text": "For the Lord will bring forth from the dust those who sleep in Him, and the dead in Christ shall rise first. Then we who are alive and remain shall be caught up together with them in the clouds to meet the Lord in the air, and so shall we be with the Lord forever. Do not fear, for the Savior has granted eternal life to all who believe in Him.",
+      "ms": 864.2,
+      "tokens_in": 65,
+      "tokens_out": 86
+    },
+    "What does the Bible say about money and wealth?": {
+      "text": "For the love of money is a root of all kinds of evils, which some having coveted after, have strayed from the faith and pierced themselves through with many sorrows. The way of the lazy man is as a hedge of thorns, but the diligent shall gather in the treasure of the faithful. Seek ye first the kingdom of God, and all these things shall be added unto you.",
+      "ms": 836.2,
+      "tokens_in": 66,
+      "tokens_out": 89
+    },
+    "Did Jesus rise from the dead?": {
+      "text": "He is not here, for he is risen, as he said. Come, see the place where the Lord lay, and go, tell his disciples that he has risen from the dead. And behold, he goes before you into Galilee; there you will see him.",
+      "ms": 731.0,
+      "tokens_in": 63,
+      "tokens_out": 64
+    },
+    "Who was Moses?": {
+      "text": "And the Lord spake unto him from the bush, and said, I am the God of Abraham, and the God of Isaac, and the God of Jacob. And Moses said, Who am I, that I should go unto Pharaoh? And the Lord said, I will be with thee, and this shall be a sign unto thee. For Moses was faithful in all God's house, and he led the people forth with a mighty hand.",
+      "ms": 861.0,
+      "tokens_in": 60,
+      "tokens_out": 97
+    },
+    "What is grace?": {
+      "text": "Grace is the unmerited favor of God, shown to the undeserving through His rich mercy. It brings forgiveness, reconciliation, and power to live unto righteousness, not by works but by faith in Christ. Blessed are those who receive grace, for it teaches, saves, and sustains the soul.",
+      "ms": 760.5,
+      "tokens_in": 60,
+      "tokens_out": 70
+    },
+    "What does the Bible say about patience?": {
+      "text": "Be patient, beloved, and establish your heart; for the coming of the Lord draws near. Do not grow weary in well-doing, for in due season you shall reap, if you faint not. The steadfast endureth the pressure of trial, knowing that the testing of faith worketh patience unto fullness of virtue.",
+      "ms": 1069.4,
+      "tokens_in": 64,
+      "tokens_out": 73
+    },
+    "How should I pray?": {
+      "text": "When thou prayest, enter into thy closet, and thy Father which seeth in secret shall reward thee openly. But when ye pray, use not vain repetitions as the heathen do; for they think they shall be heard for their much speaking. Pray in this manner: Our Father which art in heaven, hallowed be thy name.",
+      "ms": 1049.6,
+      "tokens_in": 61,
+      "tokens_out": 77
+    },
+    "What does the Bible say about marriage?": {
+      "text": "Therefore shall a man leave his father and his mother, and shall cleave unto his wife: and they shall be one flesh.\n\nHusbands, love your wives, even as Christ loved the church, and gave himself for it.\n\nLet marriage be honorable in all, and the bed undefiled: but whoremongers and adulterers God will judge.",
+      "ms": 820.9,
+      "tokens_in": 64,
+      "tokens_out": 81
+    },
+    "What does the Bible say about anger?": {
+      "text": "Be angry, yet do not sin; do not let the sun go down on your anger, and give no opportunity to the devil. Let all bitterness, wrath, anger, clamor, and slander be put away from you, with all malice, and be kind to one another, tenderhearted, forgiving one another, as God in Christ forgave you. For the anger of man does not achieve the righteousness of God.",
+      "ms": 967.6,
+      "tokens_in": 64,
+      "tokens_out": 96
+    },
+    "What does the Bible say about wisdom?": {
+      "text": "Wisdom is first to fear the Lord, for that is the beginning of understanding. Trust in the Lord with all your heart, and lean not on your own insight. In all your ways acknowledge Him, and He shall direct your paths.",
+      "ms": 797.0,
+      "tokens_in": 64,
+      "tokens_out": 57
+    },
+    "What does the Bible say about hope?": {
+      "text": "For I know the plans I have for you, declares the Lord, plans for welfare and not for evil, to give you a future and a hope. Hope does not disappoint, because the love of God has been poured into our hearts through the Holy Spirit who was given to us. We wait for the blessed hope—the appearing of the glory of our great God and Savior Jesus Christ.",
+      "ms": 916.3,
+      "tokens_in": 64,
+      "tokens_out": 86
+    },
+    "What does the Bible say about the Sabbath?": {
+      "text": "Remember the Sabbath day, to keep it holy; six days you shall labor, and do all your work, but the seventh day is a Sabbath to the Lord your God. For in six days the Lord made heaven and earth, and rested on the seventh; therefore the Sabbath is sanctified. If you keep it holy, you shall do no work on it, and your dwelling shall be blessed.",
+      "ms": 927.3,
+      "tokens_in": 65,
+      "tokens_out": 89
+    },
+    "What does the Bible say about the poor?": {
+      "text": "Blessed are the poor in spirit, for theirs is the kingdom of heaven; for laboring souls who hunger and thirst after righteousness shall be satisfied. The righteous lift up the poor, and the Lord hears their cry and delivers them out of all their troubles. Do not despise the least of these, for their care is the care of the Lord.",
+      "ms": 886.8,
+      "tokens_in": 65,
+      "tokens_out": 80
+    },
+    "Who is Jesus?": {
+      "text": "The Word became flesh, and dwelt among us, full of grace and truth; we have seen his glory, the glory as of the only Son from the Father. He is the image of the invisible God, the firstborn over all creation, and by him all things were created. He is the beloved Son, in whom the Father is well pleased, who saves, forgives, and gives eternal life.",
+      "ms": 1085.5,
+      "tokens_in": 60,
+      "tokens_out": 92
+    },
+    "Who was David?": {
+      "text": "David, a man after God’s own heart, was raised from shepherding to mighty deeds, and his heart sought the Lord above all. He kept faith in the Lord, prospering when he walked in His ways, and his throne was established for ever in righteousness. Though many saw him flesh and weakness, the Lord chose him to lead Israel with courage and mercy.",
+      "ms": 976.4,
+      "tokens_in": 60,
+      "tokens_out": 83
+    },
+    "Who was Abraham?": {
+      "text": "Now Abraham, a friend of God, believed the Lord, and it was reckoned to him as righteousness. He trusted in the promises of the Most High, and through him a great nation was to rise, blessing all the families of the earth. He walked with God, keeping His commandments, and his faith did not fail before the God who calls into existence those things that are not.",
+      "ms": 813.5,
+      "tokens_in": 60,
+      "tokens_out": 87
+    },
+    "What does the Bible say about children?": {
+      "text": "Children are a gift from the Lord, the fruit of the womb a reward. Like arrows in the hand of a mighty man, so are the children of one’s youth. Blessed is the man who has his quiver full of them; they shall not be ashamed when they speak with their enemies in the gate.",
+      "ms": 771.7,
+      "tokens_in": 64,
+      "tokens_out": 72
+    },
+    "What does the Bible say about strength in hard times?": {
+      "text": "The Lord is my refuge in the day of trouble; I will not fear, for He strengthens me with power from on high. He renews my strength like the eagle’s, and I endure with courage because His grace is sufficient in every trial. In Him I find the steadfastness to persevere, for His faithfulness sustains my heart and leads me to victory.",
+      "ms": 1073.2,
+      "tokens_in": 67,
+      "tokens_out": 84
+    },
+    "圣经关于爱是怎么说的？": {
+      "text": "爱乃是恆久忍耐，又有恩慈；爱不嫉妒，不自夸，不张狂。凡事包容，凡事相信，凡事盼望，凡事忍耐。爱是永不止息。",
+      "ms": 736.1,
+      "tokens_in": 67,
+      "tokens_out": 63
+    },
+    "耶稣是谁？": {
+      "text": "耶稣是神的儿子，为救赎人类而降生、受死、复活，显明父的爱与国度的真理。天父的道成肉身，行走在世间，传讲悔改与信靠神的福音。谁信耶稣，就得着永生，与神同在。",
+      "ms": 870.9,
+      "tokens_in": 64,
+      "tokens_out": 89
+    }
+  },
+  "multi|gpt-5-nano|v1": {
+    "What is the greatest commandment?": {
+      "text": "What is the greatest commandment in Scripture\nWhich is the most important commandment according to the Bible\nJesus’ summary of the law: the greatest commandment in the Bible",
+      "ms": 700.1,
+      "tokens_in": 71,
+      "tokens_out": 44
+    },
+    "How was the world created?": {
+      "text": "What Bible verses describe how God created the world?\nWhere in Scripture is the creation of the heavens and the earth explained?\nWhich passages recount God’s act of creation of the world in Genesis and beyond?",
+      "ms": 884.2,
+      "tokens_in": 70,
+      "tokens_out": 49
+    },
+    "What does the Bible say about love?": {
+      "text": "What Bible verses define love according to Scripture\nBible verses about what love is and how it behaves\nScripture references describing love in the Bible",
+      "ms": 648.7,
+      "tokens_in": 72,
+      "tokens_out": 37
+    },
+    "What is the fruit of the Spirit?": {
+      "text": "What does the Bible say is the fruit of the Spirit?\n\nBible verses describing the fruit of the Spirit\n\nScripture lists the fruit of the Spirit and its meanings",
+      "ms": 696.9,
+      "tokens_in": 72,
+      "tokens_out": 41
+    },
+    "What is the armor of God?": {
+      "text": "What does the Bible say is the armor of God\n\nBrethren, what is the armor of God described as in Scripture\n\nScripture list of the armor of God and its components",
+      "ms": 683.5,
+      "tokens_in": 71,
+      "tokens_out": 45
+    },
+    "What is the Lord's Prayer?": {
+      "text": "What does the Lord’s Prayer say in the Bible\nBible verses that explain the Lord’s Prayer\nScripture passages detailing the Lord’s Prayer words",
+      "ms": 688.1,
+      "tokens_in": 71,
+      "tokens_out": 38
+    },
+    "Why did God say \"I am that I am\"?": {
+      "text": "What does God mean by \"I am who I am\" in Exodus 3:14\n\nWhy did God declare Himself as \"I am\" in the Bible\n\nExodus 3:14 meaning: why God says I am who I am",
+      "ms": 766.1,
+      "tokens_in": 75,
+      "tokens_out": 58
+    },
+    "What are the Ten Commandments?": {
+      "text": "What are the Ten Commandments in the Bible\nWhere in Scripture are the Ten Commandments listed\nScriptural verses that describe the Ten Commandments",
+      "ms": 627.0,
+      "tokens_in": 71,
+      "tokens_out": 38
+    },
+    "What does the Bible say about fear and anxiety?": {
+      "text": "What Bible verses address fear and anxiety and provide guidance?\n\nWhich scriptures speak about fear and anxiety and offer reassuring counsel?\n\nWhere in the Bible does it discuss fear and anxiety and give instructions or promises?",
+      "ms": 637.7,
+      "tokens_in": 74,
+      "tokens_out": 48
+    },
+    "What is faith?": {
+      "text": "What does the Bible say about faith\n\nBiblical definitions of faith and what it means to trust God\n\nVerses that explain faith as trust in God and confidence in His promises",
+      "ms": 678.5,
+      "tokens_in": 68,
+      "tokens_out": 44
+    },
+    "Why did Jesus die on the cross?": {
+      "text": "Why did Jesus die on the cross\nPurpose of Jesus’ crucifixion in scripture\nWhat reasons for the crucifixion of Jesus are given in the Bible",
+      "ms": 605.7,
+      "tokens_in": 72,
+      "tokens_out": 41
+    },
+    "What does the Bible say about forgiveness?": {
+      "text": "What Bible verses define forgiveness and how to forgive others\nBible verses about forgiveness and pardoning others\nScripture on forgiveness and being forgiven by God and others",
+      "ms": 806.6,
+      "tokens_in": 72,
+      "tokens_out": 40
+    },
+    "What happens after death according to the Bible?": {
+      "text": "What does the Bible say happens after death\nBiblical teaching on life after death and the afterlife\nWhat are the scriptures’ claims about death and what follows",
+      "ms": 670.6,
+      "tokens_in": 73,
+      "tokens_out": 41
+    },
+    "What does the Bible say about money and wealth?": {
+      "text": "What Bible verses discuss money and wealth from a biblical perspective\nBiblical passages about wealth, money, and finances\nVerses in Scripture addressing money, riches, and financial stewardship",
+      "ms": 697.9,
+      "tokens_in": 74,
+      "tokens_out": 44
+    },
+    "Did Jesus rise from the dead?": {
+      "text": "Did Jesus rise from the dead Bible verses\n\nScriptures affirming the resurrection of Jesus\n\nBible verses about Jesus rising again",
+      "ms": 606.1,
+      "tokens_in": 71,
+      "tokens_out": 34
+    },
+    "Who was Moses?": {
+      "text": "Who is Moses in the Bible\n\nWhat does the Bible say about Moses\n\nWho was Moses according to Scripture",
+      "ms": 617.6,
+      "tokens_in": 68,
+      "tokens_out": 30
+    },
+    "What is grace?": {
+      "text": "What does the Bible say about grace\n\nWhere in Scripture is grace defined and described\n\nWhich verses explain the meaning and use of grace in the Bible",
+      "ms": 669.3,
+      "tokens_in": 68,
+      "tokens_out": 38
+    },
+    "What does the Bible say about patience?": {
+      "text": "What Bible verses speak about patience and endurance\nBiblical passages that describe patience and how to practice it\nScripture on patience: verses about waiting, long-suffering, and composure",
+      "ms": 985.4,
+      "tokens_in": 72,
+      "tokens_out": 46
+    },
+    "How should I pray?": {
+      "text": "What does the Bible say about how to pray\nBible verses that explain how we should pray\nScriptures giving guidance on prayer practices",
+      "ms": 689.9,
+      "tokens_in": 69,
+      "tokens_out": 35
+    },
+    "What does the Bible say about marriage?": {
+      "text": "What does the Bible teach about marriage?\n\nBible verses on marriage and what it means\n\nWhat scriptures address marriage in the Bible?",
+      "ms": 653.3,
+      "tokens_in": 72,
+      "tokens_out": 34
+    },
+    "What does the Bible say about anger?": {
+      "text": "What Bible verses address anger and how to handle it\nPassages in Scripture about anger and controlling one’s temper\nVerses that speak on anger, wrath, and how believers should respond",
+      "ms": 711.5,
+      "tokens_in": 72,
+      "tokens_out": 46
+    },
+    "What does the Bible say about wisdom?": {
+      "text": "What does the Bible say about wisdom and its value\nBiblical verses on wisdom and how to seek wisdom\nBible teaching about wisdom, discernment, and understanding",
+      "ms": 647.0,
+      "tokens_in": 72,
+      "tokens_out": 41
+    },
+    "What does the Bible say about hope?": {
+      "text": "What does the Bible say about hope and its meaning\n\nBible verses that describe hope in faith and perseverance\n\nScripture references on hope, hope in God, and hopeful trust",
+      "ms": 691.5,
+      "tokens_in": 72,
+      "tokens_out": 43
+    },
+    "What does the Bible say about the Sabbath?": {
+      "text": "What does the Bible say about observing the Sabbath?\n\nBible verses about Sabbath observance and practice\n\nWhat the Scriptures teach about the Sabbath day",
+      "ms": 606.3,
+      "tokens_in": 73,
+      "tokens_out": 36
+    },
+    "What does the Bible say about the poor?": {
+      "text": "What does the Bible say about the poor\nBible verses about the poor and the needy\nScriptures addressing poverty and the poor",
+      "ms": 680.9,
+      "tokens_in": 73,
+      "tokens_out": 35
+    },
+    "Who is Jesus?": {
+      "text": "Who does the Bible say Jesus is\n\nJesus Christ identity according to Scripture\n\nHow the Bible describes Jesus",
+      "ms": 660.3,
+      "tokens_in": 68,
+      "tokens_out": 30
+    },
+    "Who was David?": {
+      "text": "Who is the biblical figure named David in the Old Testament\n\nWhat does the Bible say about the life and significance of David the king of Israel\n\nWhere in Scripture is David described and identified as a servant of God and ruler of Israel",
+      "ms": 925.3,
+      "tokens_in": 68,
+      "tokens_out": 55
+    },
+    "Who was Abraham?": {
+      "text": "Who is Abraham in the Bible\n\nBiblical description of Abraham's life and identity\n\nWhat does Scripture say about Abraham, the patriarch",
+      "ms": 694.6,
+      "tokens_in": 68,
+      "tokens_out": 35
+    },
+    "What does the Bible say about children?": {
+      "text": "What does the Bible say about children and childhood?\nWhat verses speak about children in the Bible?\nWhat does Scripture teach about children and their place in families and faith?",
+      "ms": 640.5,
+      "tokens_in": 72,
+      "tokens_out": 42
+    },
+    "What does the Bible say about strength in hard times?": {
+      "text": "What Bible verses address finding strength in times of trouble\nBible verses about gaining strength during difficult circumstances\nScripture on being strengthened in hard times",
+      "ms": 579.8,
+      "tokens_in": 75,
+      "tokens_out": 37
+    },
+    "圣经关于爱是怎么说的？": {
+      "text": "圣经关于“爱”的教导有哪些经文\n\n圣经里关于爱的信息有哪些经文可作参考\n\n圣经怎样阐述爱及其原则的经文有哪些",
+      "ms": 710.4,
+      "tokens_in": 77,
+      "tokens_out": 48
+    },
+    "耶稣是谁？": {
+      "text": "耶稣在圣经中的身份与本质是什么  \n圣经如何描述耶稣的身份与来历  \n圣经经文对耶稣是谁的阐释与证据",
+      "ms": 798.7,
+      "tokens_in": 74,
+      "tokens_out": 54
+    }
+  }
+}
